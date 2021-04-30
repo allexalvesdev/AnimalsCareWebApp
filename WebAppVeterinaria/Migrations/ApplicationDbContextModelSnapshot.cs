@@ -229,20 +229,41 @@ namespace WebAppVeterinaria.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Bairro")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Celular")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Cep")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Complemento")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Logradouro")
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("NomeCompleto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Numero")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Rg")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("Id");
 
@@ -260,7 +281,9 @@ namespace WebAppVeterinaria.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<DateTime>("DataConsulta")
                         .HasColumnType("datetime2");
@@ -269,10 +292,10 @@ namespace WebAppVeterinaria.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("HistoricoClinicoAnimal")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Idade")
                         .HasColumnType("nvarchar(max)");
@@ -310,51 +333,6 @@ namespace WebAppVeterinaria.Migrations
                     b.ToTable("Consultas");
                 });
 
-            modelBuilder.Entity("WebAppVeterinaria.Entity.Endereco", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Bairro")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Cep")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Cidade")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Complemento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Logradouro")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numero")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VeterinarioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClienteId")
-                        .IsUnique();
-
-                    b.HasIndex("VeterinarioId")
-                        .IsUnique();
-
-                    b.ToTable("Enderecos");
-                });
-
             modelBuilder.Entity("WebAppVeterinaria.Entity.Veterinario", b =>
                 {
                     b.Property<int>("Id")
@@ -365,21 +343,42 @@ namespace WebAppVeterinaria.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Bairro")
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Cep")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("CodigoCRMV")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Complemento")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Logradouro")
+                        .HasColumnType("varchar(250)");
 
                     b.Property<string>("NomeCompleto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Numero")
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Rg")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Veterinario");
+                    b.ToTable("Veterinarios");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -452,37 +451,14 @@ namespace WebAppVeterinaria.Migrations
                     b.Navigation("Veterinario");
                 });
 
-            modelBuilder.Entity("WebAppVeterinaria.Entity.Endereco", b =>
-                {
-                    b.HasOne("WebAppVeterinaria.Entity.Cliente", "Cliente")
-                        .WithOne("Endereco")
-                        .HasForeignKey("WebAppVeterinaria.Entity.Endereco", "ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WebAppVeterinaria.Entity.Veterinario", "Veterinario")
-                        .WithOne("Endereco")
-                        .HasForeignKey("WebAppVeterinaria.Entity.Endereco", "VeterinarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Veterinario");
-                });
-
             modelBuilder.Entity("WebAppVeterinaria.Entity.Cliente", b =>
                 {
                     b.Navigation("Consultas");
-
-                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("WebAppVeterinaria.Entity.Veterinario", b =>
                 {
                     b.Navigation("Consultas");
-
-                    b.Navigation("Endereco");
                 });
 #pragma warning restore 612, 618
         }

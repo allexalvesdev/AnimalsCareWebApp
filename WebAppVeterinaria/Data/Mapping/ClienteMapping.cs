@@ -19,10 +19,13 @@ namespace WebAppVeterinaria.Data.Mapping
             builder.Property(c => c.Cpf).HasColumnType("varchar(20)");
             builder.Property(c => c.Telefone).HasColumnType("varchar(20)");
             builder.Property(c => c.Celular).HasColumnType("varchar(20)");
-
-            // 1 : 1 => Cliente : Endereco
-            builder.HasOne(c => c.Endereco)
-                .WithOne(e => e.Cliente);
+            builder.Property(e => e.Logradouro).HasColumnType("varchar(250)");
+            builder.Property(e => e.Numero).HasColumnType("varchar(50)");
+            builder.Property(e => e.Estado).HasColumnType("varchar(20)");
+            builder.Property(e => e.Cidade).HasColumnType("varchar(100)");
+            builder.Property(e => e.Complemento).HasColumnType("varchar(100)");
+            builder.Property(e => e.Cep).HasColumnType("varchar(20)");
+            builder.Property(e => e.Bairro).HasColumnType("varchar(100)");
 
             builder.ToTable("Clientes");
 

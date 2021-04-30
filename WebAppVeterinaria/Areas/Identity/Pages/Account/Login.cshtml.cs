@@ -70,7 +70,6 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-        [Route("identity/conta/acessar")]
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
@@ -85,7 +84,7 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Usuário conectado.");
-                    return LocalRedirect(returnUrl);
+                    return RedirectToAction("Index", "Clientes");
                 }
                 if (result.RequiresTwoFactor)
                 {

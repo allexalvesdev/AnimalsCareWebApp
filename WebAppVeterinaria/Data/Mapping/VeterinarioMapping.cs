@@ -18,10 +18,14 @@ namespace WebAppVeterinaria.Data.Mapping
             builder.Property(v => v.CodigoCRMV).HasColumnType("varchar(50)");
             builder.Property(v => v.Cpf).HasColumnType("varchar(20)");
             builder.Property(v => v.Rg).HasColumnType("varchar(50)");
+            builder.Property(e => e.Logradouro).HasColumnType("varchar(250)");
+            builder.Property(e => e.Numero).HasColumnType("varchar(50)");
+            builder.Property(e => e.Estado).HasColumnType("varchar(20)");
+            builder.Property(e => e.Cidade).HasColumnType("varchar(100)");
+            builder.Property(e => e.Complemento).HasColumnType("varchar(100)");
+            builder.Property(e => e.Cep).HasColumnType("varchar(20)");
+            builder.Property(e => e.Bairro).HasColumnType("varchar(100)");
 
-            // 1 : 1 => Veterinario : Endereco
-            builder.HasOne(v => v.Endereco)
-                .WithOne(e => e.Veterinario);
 
             builder.ToTable("Veterinarios");
         }
