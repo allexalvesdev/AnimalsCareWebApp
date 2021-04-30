@@ -1,5 +1,5 @@
 ﻿@using X.PagedList.Mvc.Core
-@model X.PagedList.PagedList<WebAppVeterinaria.Entity.Cliente>
+@model X.PagedList.PagedList<WebAppVeterinaria.Entity.Veterinario>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,9 +7,9 @@
 
 <section class="top-padding background-content vh-100">
     <div class="container">
-        <h3 class="text-color-primary mt-1">Lista de Clientes</h3>
+        <h3 class="text-color-primary mt-1">Lista de Veterinários</h3>
 
-        <form class="mt-1" asp-action="index" asp-controller="clientes" method="get">
+        <form class="mt-1" asp-action="index" asp-controller="veterinarios" method="get">
             <div class="row">
                 <div class="col-md-8">
                     <p class="form-inline">
@@ -17,27 +17,26 @@
                         <button type="submit" name="name" value="" class="btn btn-success"><i class="fas fa-search"></i></button>
                         <a class="align-self-center mt-1" asp-action="Index">Limpar pesquisa</a>
                     </p>
-                    
+
                 </div>
                 <div class="col-md-4">
                     <div class="text-right">
-                        <a class="btn btn-primary text-right" asp-action="Create"><i class="fas fa-user-plus"></i> Novo Cliente</a>
+                        <a class="btn btn-primary text-right" asp-action="Create"><i class="fas fa-user-md"></i> Novo Veterinário</a>
                     </div>
                 </div>
             </div>
         </form>
-
         <table class="table shadow p-3 rounded">
             <thead class="table-light bg-light rounded text-color-secondary">
                 <tr>
                     <th>
-                        @Html.DisplayName("Nome Completo")
+                        @Html.DisplayName("Nome")
                     </th>
                     <th>
                         @Html.DisplayName("CPF")
                     </th>
                     <th>
-                        @Html.DisplayName("Celular")
+                        @Html.DisplayName("CRMV")
                     </th>
                     <th>
                         @Html.DisplayName("Status")
@@ -55,7 +54,6 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-
                         <td>
                             @Html.DisplayFor(modelItem => item.NomeCompleto)
                         </td>
@@ -63,7 +61,7 @@
                             @Html.DisplayFor(modelItem => item.Cpf)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Celular)
+                            @Html.DisplayFor(modelItem => item.CodigoCRMV)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Ativo)

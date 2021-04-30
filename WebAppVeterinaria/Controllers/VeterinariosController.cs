@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
 using X.PagedList;
-
 namespace WebAppVeterinaria.Controllers
 {
-    public class ClientesController : Controller
+    public class VeterinariosController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public ClientesController(ApplicationDbContext context)
+        public VeterinariosController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -27,22 +27,10 @@ namespace WebAppVeterinaria.Controllers
         {
             var search = Request.Query["Search"].ToString();
 
-            var clientes = _context.Clientes.OrderBy(x => x.Id).Where(c => c.NomeCompleto.Contains(search));
-            PagedList<Cliente> model = new PagedList<Cliente>(clientes, page, pageSize);
-
-            ViewBag.Search = search;
+            var veterinarios = _context.Veterinarios.OrderBy(v => v.Id).Where(v => v.NomeCompleto.Contains(search));
+            PagedList<Veterinario> model = new PagedList<Veterinario>(veterinarios, page, pageSize);
 
             return View("Index", model);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var detalhes = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
-
-            return View(detalhes);
         }
 
         [HttpGet]
@@ -52,34 +40,43 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Cliente cliente)
+        public async Task<IActionResult> Create(Veterinario veterinario)
         {
+            if (!ModelState.IsValid) return View(veterinario);
 
-            _context.Clientes.Add(cliente);
+            _context.Veterinarios.Add(veterinario);
 
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+            var detalhes = await _context.Veterinarios.FirstOrDefaultAsync(v => v.Id == id);
+
+            return View(detalhes);
+        }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
 
-            var cliente = await _context.Clientes.FindAsync(id);
+            var veterinario = await _context.Veterinarios.FindAsync(id);
 
-            return View(cliente);
+            return View(veterinario);
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Cliente cliente)
+        public async Task<IActionResult> Edit(Veterinario veterinario)
         {
-            if (!ModelState.IsValid) return View(cliente);
+            if (!ModelState.IsValid) return View(veterinario);
 
-            _context.Clientes.Update(cliente);
-
+            _context.Veterinarios.Update(veterinario);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -90,18 +87,17 @@ namespace WebAppVeterinaria.Controllers
         {
             if (id == null) return NotFound();
 
-            var cliente = await _context.Clientes.FindAsync(id);
+            var veterinario = await _context.Veterinarios.FindAsync(id);
 
-            return View(cliente); 
+            return View(veterinario);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(Cliente cliente)
+        public async Task<IActionResult> Delete(Veterinario veterinario)
         {
-            if (!ModelState.IsValid) return View(cliente);
+            if (!ModelState.IsValid) return View(veterinario);
 
-            _context.Clientes.Remove(cliente);
-
+            _context.Veterinarios.Remove(veterinario);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

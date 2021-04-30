@@ -86,10 +86,13 @@ body {
 
 
 /*INDEX*/
-.top-padding{
+.top-padding {
+    padding-top: 100px !important;
+    position: relative;
+}
 
-    padding-top:100px !important;
-    position:relative;
+.overflow-h{
+    overflow-y:hidden;
 }
 
 .text-color-primary {
@@ -140,7 +143,7 @@ body {
 
     .btn-cta-secondary:hover {
         background-color: #2359B2;
-        color:aliceblue;
+        color: aliceblue;
     }
 
 .btn-cta-primary:hover {
@@ -164,7 +167,7 @@ body {
     line-height: 1.5;
     border-radius: 25px;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    margin-right:8px;
+    margin-right: 8px;
 }
 
 .btn-cta-primary-acessar {
@@ -194,8 +197,8 @@ body {
 
 .bg-primary-content {
     background-color: rgba(205, 237, 218, 0.60);
-    padding:20px;
-    border-radius:50%;
+    padding: 20px;
+    border-radius: 50%;
 }
 
 /*ANIMACAO*/

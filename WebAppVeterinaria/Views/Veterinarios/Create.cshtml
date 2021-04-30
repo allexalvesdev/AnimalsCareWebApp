@@ -1,4 +1,4 @@
-﻿@model WebAppVeterinaria.Entity.Cliente
+﻿@model WebAppVeterinaria.Entity.Veterinario
 
 @{
     ViewData["Title"] = "Create";
@@ -6,13 +6,15 @@
 
 <section class="top-padding">
     <div class="container">
-        <h1>Novo Cliente</h1>
+        <h1>Novo Veterinário</h1>
         <hr />
         <div class="row">
             <div class="col-md-4">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <partial name="_FormCliente" />
+
+                    <partial name="_FormVeterinario" />
+
                     <div class="form-group">
                         <input type="submit" value="Salvar" class="btn btn-primary" />
                     </div>
@@ -21,7 +23,7 @@
         </div>
 
         <div>
-            <a asp-action="Index">Voltar</a>
+            <a class="btn btn-light" asp-action="Index">Voltar</a>
         </div>
     </div>
 </section>

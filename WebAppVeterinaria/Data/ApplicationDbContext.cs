@@ -7,10 +7,10 @@ namespace WebAppVeterinaria.Data
     public class ApplicationDbContext : IdentityDbContext
     {
 
+        public DbSet<Veterinario> Veterinarios { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Consulta> Consultas { get; set; }
-        public DbSet<Veterinario> Veterinarios { get; set; }
-
+       
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

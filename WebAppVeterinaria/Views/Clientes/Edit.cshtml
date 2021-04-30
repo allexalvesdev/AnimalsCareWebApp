@@ -1,18 +1,18 @@
 ﻿@model WebAppVeterinaria.Entity.Cliente
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <section class="top-padding">
     <div class="container">
-        <h1>Novo Cliente</h1>
+        <h1>Editar Cliente</h1>
         <hr />
         <div class="row">
             <div class="col-md-4">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <partial name="_FormCliente" />
+                    <partial name="_FormCliente" />
                     <div class="form-group">
                         <input type="submit" value="Salvar" class="btn btn-primary" />
                     </div>
@@ -25,7 +25,6 @@
         </div>
     </div>
 </section>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

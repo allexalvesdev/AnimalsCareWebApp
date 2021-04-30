@@ -470,3 +470,13 @@ C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\bin\Debug\net5.0
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Clientes\Index.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Clientes\Create.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Shared\_LayoutAuth.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Clientes\_FormCliente.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Clientes\Edit.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Clientes\Details.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Clientes\Delete.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\Index.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\Create.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\Edit.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\Delete.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\_FormVeterinario.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\Details.cshtml.g.cs

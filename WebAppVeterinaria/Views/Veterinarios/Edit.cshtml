@@ -1,27 +1,30 @@
-﻿@model WebAppVeterinaria.Entity.Cliente
+﻿@model WebAppVeterinaria.Entity.Veterinario
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <section class="top-padding">
     <div class="container">
-        <h1>Novo Cliente</h1>
+        <h1>Editar Veterinário</h1>
+
         <hr />
         <div class="row">
             <div class="col-md-4">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <partial name="_FormCliente" />
+
+                    <partial name="_FormVeterinario" />
+
                     <div class="form-group">
-                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                        <input type="submit" value="Atualizar" class="btn btn-primary" />
                     </div>
                 </form>
             </div>
         </div>
 
         <div>
-            <a asp-action="Index">Voltar</a>
+            <a class="btn btn-light" asp-action="Index">Back to List</a>
         </div>
     </div>
 </section>
