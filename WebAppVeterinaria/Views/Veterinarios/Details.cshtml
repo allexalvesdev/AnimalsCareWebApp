@@ -4,97 +4,110 @@
     ViewData["Title"] = "Details";
 }
 
-<section class="top-padding">
+<section class="top-padding background-content min-vh-100">
     <div class="container">
-        <h1>Detalhes do Veterinário</h1>
+        <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+            <h1>Detalhes do Veterinário</h1>
 
-        <div>
-            <hr />
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Id)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Id)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NomeCompleto)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.NomeCompleto)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Cpf)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Cpf)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Rg)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Rg)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CodigoCRMV)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.CodigoCRMV)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Ativo)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Ativo)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Cep)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Cep)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Logradouro)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Logradouro)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Bairro)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Bairro)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Numero)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Numero)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Complemento)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Complemento)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Cidade)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Cidade)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Estado)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Estado)
-                </dd>
-            </dl>
-        </div>
-        <div>
-            @Html.ActionLink("", "Edit", new { Model.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
-            <a class="btn btn-light" asp-action="Index">Voltar</a>
-        </div>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("Nome Completo")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.NomeCompleto)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("CPF")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cpf)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("RG")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Rg)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("CRMV")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.CodigoCRMV)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @if (Model.Ativo == true)
+                        {
+                            <div class="shadow-sm" style="background-color:#4f794e; text-align:center; border-radius:25px; color:aliceblue; width:70px;">
+                                <small>ATIVO</small>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="shadow-sm" style="background-color:#b25454; text-align:center; border-radius:25px; color:aliceblue; width:70px;">
+                                <small>INATIVO</small>
+                            </div>
+                        }
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("CEP")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cep)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("Endereço")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Logradouro)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Bairro)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Bairro)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("Número")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Numero)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Complemento)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Complemento)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Cidade)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cidade)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Estado)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                @Html.ActionLink("", "Edit", new { Model.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
+                <a class="btn btn-light" asp-action="Index">Voltar</a>
+            </div>
 
+        </div>
     </div>
 </section>

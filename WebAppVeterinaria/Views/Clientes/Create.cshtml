@@ -4,28 +4,32 @@
     ViewData["Title"] = "Create";
 }
 
-<section class="top-padding">
+<section class="top-padding background-content">
     <div class="container">
         <h1>Novo Cliente</h1>
         <hr />
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <partial name="_FormCliente" />
-                    <div class="form-group">
-                        <input type="submit" value="Salvar" class="btn btn-primary" />
-                    </div>
+
+                        <div class="col-md-6 p-0 m-0">
+                            <div class="form-group mt-2">
+                                <input type="submit" value="Salvar" class="btn btn-success" />
+                                <a class="btn btn-light" asp-action="Index">Voltar</a>
+                            </div>
+                        </div>
                 </form>
             </div>
-        </div>
-
-        <div>
-            <a asp-action="Index">Voltar</a>
         </div>
     </div>
 </section>
 
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    BuscaCep();
+</script>
 }

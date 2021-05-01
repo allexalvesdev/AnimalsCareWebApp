@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppVeterinaria.ViewModels;
 
 namespace WebAppVeterinaria.Entity
 {
@@ -13,6 +15,7 @@ namespace WebAppVeterinaria.Entity
         [Key]
         public int Id { get; set; }
         [DisplayName("Data Cadastro")]
+
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 
         [DisplayName("Data da Consulta")]
@@ -53,7 +56,7 @@ namespace WebAppVeterinaria.Entity
         public int VeterinarioId { get; set; }
 
         /*Relacao EF*/
-        public Cliente Cliente { get; set; }
-        public Veterinario Veterinario { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public virtual Veterinario Veterinario { get; set; }
     }
 }

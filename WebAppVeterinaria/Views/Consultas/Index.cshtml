@@ -39,7 +39,6 @@
                         @Html.DisplayName("Retorno?")
                     </th>
                     <th>
-                    <th>
                         @Html.DisplayName("Cliente")
                     </th>
                     <th>
@@ -62,10 +61,11 @@
                             @Html.DisplayFor(modelItem => item.Retorno)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.ClienteId)
+                            @Html.DisplayFor(modelItem => item.Cliente.NomeCompleto)
+
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.VeterinarioId)
+                            @Html.DisplayFor(modelItem => item.Veterinario.NomeCompleto)
                         </td>
                         <td>
                             @Html.ActionLink("", "Edit", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })

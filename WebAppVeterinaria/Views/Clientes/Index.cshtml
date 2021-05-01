@@ -66,7 +66,18 @@
                             @Html.DisplayFor(modelItem => item.Celular)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Ativo)
+                            @if (item.Ativo == true)
+                            {
+                                <div class="shadow-sm" style="background-color:#4f794e; text-align:center; border-radius:25px; color:aliceblue">
+                                    <small>ATIVO</small>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="shadow-sm" style="background-color:#b25454; text-align:center; border-radius:25px; color:aliceblue">
+                                    <small>INATIVO</small>
+                                </div>
+                            }
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Cidade)

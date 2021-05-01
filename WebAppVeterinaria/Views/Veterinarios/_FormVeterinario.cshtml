@@ -1,6 +1,12 @@
 ﻿@model WebAppVeterinaria.Entity.Veterinario
 
 
+<div class="row">
+    <div>
+        <h5>Dados do Veterinário</h5>
+    </div>
+    <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+        <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="NomeCompleto" class="control-label">Nome Completo</label>
                 <input asp-for="NomeCompleto" class="form-control" />
@@ -16,16 +22,26 @@
                 <input asp-for="Rg" class="form-control" />
                 <span asp-validation-for="Rg" class="text-danger"></span>
             </div>
+        </div>
+
+        <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="CodigoCRMV" class="control-label">CRMV</label>
                 <input asp-for="CodigoCRMV" class="form-control" />
                 <span asp-validation-for="CodigoCRMV" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Ativo" /> @Html.DisplayNameFor(model => model.Ativo)
-                </label>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Ativo">
+                <label class="custom-control-label" for="customSwitch1">@Html.DisplayNameFor(model => model.Ativo)</label>
             </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <h5>Dados de Endereço</h5>
+    </div>
+    <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+        <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Cep" class="control-label">CEP</label>
                 <input asp-for="Cep" class="form-control" />
@@ -46,6 +62,9 @@
                 <input asp-for="Numero" class="form-control" />
                 <span asp-validation-for="Numero" class="text-danger"></span>
             </div>
+        </div>
+
+        <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="Complemento" class="control-label"></label>
                 <input asp-for="Complemento" class="form-control" />
@@ -61,3 +80,6 @@
                 <input asp-for="Estado" class="form-control" />
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
+        </div>
+    </div>
+</div>

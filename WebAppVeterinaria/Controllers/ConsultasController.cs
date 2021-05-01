@@ -27,12 +27,13 @@ namespace WebAppVeterinaria.Controllers
             return View();
         }
 
+
         [HttpGet]
         public IActionResult Index(int page = 1, int pageSize = 10)
         {
             var search = Request.Query["Search"].ToString();
 
-            var consultas = _context.Consultas.OrderBy(c => c.DataConsulta).Where(c => c.Cliente.NomeCompleto.Contains(search));
+            var consultas = _context.Consultas.Include(c => c.Cliente).Include(c => c.Veterinario).OrderBy(c => c.DataConsulta).Where(c => c.Cliente.NomeCompleto.Contains(search));
 
             PagedList<Consulta> model = new PagedList<Consulta>(consultas, page, pageSize);
 
