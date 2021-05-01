@@ -1,23 +1,22 @@
-﻿@model WebAppVeterinaria.ViewModels.ConsultaViewModel
+﻿@model WebAppVeterinaria.Entity.Consulta
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
-
 <section class="top-padding background-content">
     <div class="container">
-        <h1>Nova Consulta</h1>
+        <h1>Editar Consulta</h1>
         <hr />
         <div class="row">
             <div class="col-md-12">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <partial name="_FormConsulta" />
 
                     <div class="col-md-6 p-0 m-0">
                         <div class="form-group mt-2">
-                            <input type="submit" value="Salvar" class="btn btn-success" />
+                            <input type="submit" value="Atualizar" class="btn btn-success" />
                             <a class="btn btn-light" asp-action="Index">Voltar</a>
                         </div>
                     </div>

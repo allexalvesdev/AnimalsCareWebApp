@@ -488,3 +488,6 @@ C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Edit.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Index.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\_FormConsulta.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Edit.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Details.cshtml.g.cs
+C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Delete.cshtml.g.cs

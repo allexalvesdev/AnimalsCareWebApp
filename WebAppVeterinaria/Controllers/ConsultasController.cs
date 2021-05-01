@@ -45,7 +45,10 @@ namespace WebAppVeterinaria.Controllers
         {
             if (id == null) return NotFound();
 
-            var detalhes = await _context.Consultas.FirstOrDefaultAsync(c => c.Id == id);
+            var detalhes = await _context.Consultas
+                 .Include(c => c.Cliente)
+                .Include(c => c.Veterinario)
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             return View(detalhes);
         }
@@ -53,10 +56,10 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var listaClientes = _context.Clientes.Select(clientes => new SelectListItem { Value = clientes.Id.ToString(), Text = clientes.NomeCompleto}).ToList();
+            var listaClientes = _context.Clientes.Select(clientes => new SelectListItem { Value = clientes.Id.ToString(), Text = clientes.NomeCompleto }).ToList();
             var listaVeterinarios = _context.Veterinarios.Select(veterinarios => new SelectListItem { Value = veterinarios.Id.ToString(), Text = veterinarios.NomeCompleto }).ToList();
 
-            return View(new ConsultaViewModel {Consulta = new Consulta(), ClienteSelect = listaClientes, VeterinarioSelect = listaVeterinarios});
+            return View(new ConsultaViewModel { Consulta = new Consulta(), ClienteSelect = listaClientes, VeterinarioSelect = listaVeterinarios });
         }
 
         [HttpPost]
@@ -64,7 +67,7 @@ namespace WebAppVeterinaria.Controllers
         {
             if (!ModelState.IsValid) return View(consulta);
 
-             _context.Consultas.Add(consulta);
+            _context.Consultas.Add(consulta);
 
             consulta.Cliente = _context.Clientes.Find(ClienteId);
             consulta.Veterinario = _context.Veterinarios.Find(VeterinarioId);
@@ -102,7 +105,10 @@ namespace WebAppVeterinaria.Controllers
         {
             if (id == null) return NotFound();
 
-            var consulta = await _context.Consultas.FindAsync(id);
+            var consulta = await _context.Consultas
+                .Include(c => c.Cliente)
+                .Include(c => c.Veterinario)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             return View(consulta);
         }
