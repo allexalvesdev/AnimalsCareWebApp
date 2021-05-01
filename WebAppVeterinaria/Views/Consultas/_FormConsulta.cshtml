@@ -1,0 +1,105 @@
+﻿@model WebAppVeterinaria.ViewModels.ConsultaViewModel
+
+<div class="row">
+    <div>
+        <h5>Dados do cliente</h5>
+    </div>
+    <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Consulta.DataCadastro" class="control-label"></label>
+                <input asp-for="Consulta.DataCadastro" class="form-control" disabled />
+                <span asp-validation-for="Consulta.DataCadastro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Consulta.Cliente" class="texto-login-custom">Cliente</label>
+                @Html.DropDownList("ClienteId", Model.ClienteSelect, new { @class = "form-control" })
+                <span asp-validation-for="Consulta.Cliente" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Consulta.Veterinario" class="texto-login-custom">Veterinário</label>
+                @Html.DropDownList("VeterinarioId", Model.VeterinarioSelect, new { @class = "form-control" })
+                <span asp-validation-for="Consulta.Veterinario" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Consulta.DataConsulta" class="control-label"></label>
+                <input asp-for="Consulta.DataConsulta" class="form-control" />
+                <span asp-validation-for="Consulta.DataConsulta" class="text-danger"></span>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Retorno">
+                <label class="custom-control-label" for="customSwitch1">@Html.DisplayNameFor(model => model.Consulta.Retorno)</label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Consulta.DataRetorno" class="control-label"></label>
+                <input asp-for="Consulta.DataRetorno" class="form-control" />
+                <span asp-validation-for="Consulta.DataRetorno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Descricao" class="control-label"></label>
+                <input asp-for="Consulta.Descricao" class="form-control" />
+                <span asp-validation-for="Consulta.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Observacao" class="control-label"></label>
+                <textarea cols="40" rows="5" asp-for="Consulta.Observacao" class="form-control"></textarea>
+                <span asp-validation-for="Consulta.Observacao" class="text-danger"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+        <h5>Dados do Pet</h5>
+    </div>
+    <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Consulta.NomeAnimal" class="control-label"></label>
+                <input asp-for="Consulta.NomeAnimal" class="form-control" />
+                <span asp-validation-for="Consulta.NomeAnimal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.RacaAnimal" class="control-label"></label>
+                <input asp-for="Consulta.RacaAnimal" class="form-control" />
+                <span asp-validation-for="Consulta.RacaAnimal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoEspecie" class="control-label">Espécie</label><br />
+                <input type="radio" value="1" asp-for="TipoEspecie" checked /> Canina
+                <input type="radio" value="2" asp-for="TipoEspecie" /> Felina
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoSexo" class="control-label">Sexo</label><br />
+                <input type="radio" value="1" asp-for="TipoSexo" checked /> Macho
+                <input type="radio" value="2" asp-for="TipoSexo" /> Femêa
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Consulta.Idade" class="control-label"></label>
+                <input asp-for="Consulta.Idade" class="form-control" />
+                <span asp-validation-for="Consulta.Idade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Peso" class="control-label"></label>
+                <input asp-for="Consulta.Peso" class="form-control" />
+                <span asp-validation-for="Consulta.Peso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.HistoricoClinicoAnimal" class="control-label"></label>
+                <textarea cols="40" rows="5" asp-for="Consulta.HistoricoClinicoAnimal" class="form-control" > </textarea>
+                <span asp-validation-for="Consulta.HistoricoClinicoAnimal" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -23,6 +23,9 @@ namespace WebAppVeterinaria.ViewModels
         public Veterinario Veterinario { get; set; }
         public string VeterinarioNome { get; set; }
 
+        public ETipoSexo TipoSexo { get; set; }
+        public ETipoEspecie TipoEspecie { get; set; }
+
         public List<SelectListItem> ClienteSelect { get; set; }
         public List<SelectListItem> VeterinarioSelect { get; set; }
     }
