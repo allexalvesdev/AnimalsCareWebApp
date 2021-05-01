@@ -13,7 +13,7 @@ namespace WebAppVeterinaria.Entity
         [Key]
         public int Id { get; set; }
         [DisplayName("Data Cadastro")]
-        public DateTime DataCadastro { get; set; }
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
 
         [DisplayName("Data da Consulta")]
         public DateTime DataConsulta { get; set; }
