@@ -482,11 +482,6 @@ C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Veterinarios\Details.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Index.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Create.cshtml.g.cs
-C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Create.cshtml.g.cs
-C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Delete.cshtml.g.cs
-C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Details.cshtml.g.cs
-C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Edit.cshtml.g.cs
-C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas1\Index.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\_FormConsulta.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Edit.cshtml.g.cs
 C:\Users\aalve\source\repos\WebAppVeterinaria\WebAppVeterinaria\obj\Debug\net5.0\Razor\Views\Consultas\Details.cshtml.g.cs

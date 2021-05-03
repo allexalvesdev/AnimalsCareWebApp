@@ -34,6 +34,7 @@ namespace WebAppVeterinaria.Entity
         public string Observacao { get; set; }
 
         //Dados Pet
+
         [DisplayName("Paciente")]
         public string NomeAnimal { get; set; }
 
@@ -48,6 +49,7 @@ namespace WebAppVeterinaria.Entity
         public string Idade { get; set; }
         public string Peso { get; set; }
 
+
         [DisplayName("Histórico Clinico")]
         public string HistoricoClinicoAnimal { get; set; }
 
@@ -58,5 +60,6 @@ namespace WebAppVeterinaria.Entity
         /*Relacao EF*/
         public virtual Cliente Cliente { get; set; }
         public virtual Veterinario Veterinario { get; set; }
+
     }
 }

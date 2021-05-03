@@ -110,6 +110,7 @@ namespace WebAppVeterinaria.Controllers
                 .Include(c => c.Veterinario)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
+
             return View(consulta);
         }
 
