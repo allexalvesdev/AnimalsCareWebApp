@@ -28,5 +28,6 @@ namespace WebAppVeterinaria.Entity
 
         /*Relacao EF*/
         public virtual IEnumerable<Consulta> Consultas { get; set; }
+        public virtual IEnumerable<Animal> Animais { get; set; }
     }
 }

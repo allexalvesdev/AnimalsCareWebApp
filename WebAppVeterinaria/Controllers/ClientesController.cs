@@ -54,6 +54,7 @@ namespace WebAppVeterinaria.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Cliente cliente)
         {
+            if (!ModelState.IsValid) return View(cliente);
 
             _context.Clientes.Add(cliente);
 
@@ -92,7 +93,7 @@ namespace WebAppVeterinaria.Controllers
 
             var cliente = await _context.Clientes.FindAsync(id);
 
-            return View(cliente); 
+            return View(cliente);
         }
 
         [HttpPost]
@@ -106,5 +107,7 @@ namespace WebAppVeterinaria.Controllers
 
             return RedirectToAction("Index");
         }
+
     }
+
 }

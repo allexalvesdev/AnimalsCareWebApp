@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace WebAppVeterinaria.Entity
 {
-    public class Servico : Animal
+    public class Servico
     {
         public int Id { get; set; }
-        public DateTime DataChegada { get; set; }
-        public DateTime PrevisaoEntrega { get; set; }
-        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public decimal Preco { get; set; }
+
     }
 }

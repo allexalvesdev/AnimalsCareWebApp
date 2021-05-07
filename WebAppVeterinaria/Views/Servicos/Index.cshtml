@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebAppVeterinaria.Entity.Servico>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="top-padding background-content vh-100">
+    <div class="container">
+        <h3 class="text-color-primary mt-1">Lista de Serviços</h3>
+        <div class="mb-3">
+            <div class="text-right">
+                <a class="btn btn-primary text-right" asp-action="Create"><i class="fas fa-user-plus"></i> Novo Serviço</a>
+            </div>
+        </div>
+        <table class="table shadow p-3 rounded">
+            <thead class="table-light bg-light rounded text-color-secondary">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Descição")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Preço")
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="bg-light text-color-primary">
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Preco)
+                    </td>
+                    <td>
+                        @Html.ActionLink("", "Edit", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
+                        @Html.ActionLink("", "Details", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-search p-2 shadow-sm text-info" })
+                        @Html.ActionLink("", "Delete", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-trash-alt p-2 shadow-sm text-danger" })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

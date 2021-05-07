@@ -16,4 +16,15 @@ namespace WebAppVeterinaria.Entity
         Maxo = 1,
         Femea = 2
     }
+    public enum ETipoPelo
+    {
+        PeloLongo = 1,
+        PeloCurto = 2,
+        PeloCurtoEncaracolado = 3,
+        PeloOnduladoLongo = 4,
+        PeloDupla = 5,
+        PeloTexturaDura = 5,
+        PeloTexturaLisa = 6,
+        PeloPeculiar = 7
+    }
 }
