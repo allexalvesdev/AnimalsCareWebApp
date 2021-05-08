@@ -29,7 +29,7 @@ namespace WebAppVeterinaria.Controllers
         {
             var search = Request.Query["Search"].ToString();
 
-            var animais = _context.Animais.OrderBy(x => x.Id).Where(c => c.Nome.Contains(search));
+            var animais = _context.Animais.Include(c => c.Cliente).OrderBy(x => x.Id).Where(c => c.Nome.Contains(search) || c.Cliente.NomeCompleto.Contains(search));
             PagedList<Animal> model = new PagedList<Animal>(animais, page, pageSize);
 
             ViewBag.Search = search;
@@ -51,7 +51,7 @@ namespace WebAppVeterinaria.Controllers
 
             _context.Animais.Add(animal);
 
-            animal.Cliente = _context.Clientes.Find(ClienteId);
+            animal.Cliente = await _context.Clientes.FindAsync(ClienteId);
 
             await _context.SaveChangesAsync();
 

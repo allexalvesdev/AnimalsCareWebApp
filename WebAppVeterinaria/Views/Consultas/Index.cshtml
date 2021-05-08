@@ -53,31 +53,31 @@
             <tbody class="bg-light text-color-primary">
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cliente.NomeCompleto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeAnimal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataConsulta)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataRetorno)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Retorno)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Veterinario.NomeCompleto)
-                    </td>
-                    <td>
-                        @Html.ActionLink("", "Edit", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
-                        @Html.ActionLink("", "Details", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-search p-2 shadow-sm text-info" })
-                        @Html.ActionLink("", "Delete", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-trash-alt p-2 shadow-sm text-danger" })
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cliente.NomeCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeAnimal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataConsulta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataRetorno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Retorno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Veterinario.NomeCompleto)
+                        </td>
+                        <td>
+                            @Html.ActionLink("", "Edit", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
+                            @Html.ActionLink("", "Details", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-search p-2 shadow-sm text-info" })
+                            @Html.ActionLink("", "Delete", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-trash-alt p-2 shadow-sm text-danger" })
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>

@@ -1,5 +1,6 @@
-﻿@model WebAppVeterinaria.ViewModels.AnimalViewModel
-@using WebAppVeterinaria.Entity
+﻿@using WebAppVeterinaria.Entity
+@model WebAppVeterinaria.ViewModels.AnimalViewModel
+
 
 <div class="row">
     <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
@@ -10,6 +11,7 @@
                 @Html.DropDownList("ClienteId", Model.ClienteSelect, new { @class = "form-control" })
                 <span asp-validation-for="Animal.Cliente" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Animal.Nome" class="control-label"></label>
                 <input asp-for="Animal.Nome" class="form-control" />
@@ -21,21 +23,21 @@
                 <span asp-validation-for="Animal.Raca" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoSexo" class="control-label">Sexo</label><br />
-                <input type="radio" value="1" asp-for="TipoSexo" checked /> Macho
-                <input type="radio" value="2" asp-for="TipoSexo" /> Fêmea
+                <label asp-for="Animal.TipoSexo" class="control-label">Sexo</label><br />
+                <input type="radio" value="1" asp-for="Animal.TipoSexo" checked /> Macho
+                <input type="radio" value="2" asp-for="Animal.TipoSexo" /> Fêmea
             </div>
             <div class="form-group">
-                <label asp-for="TipoEspecie" class="control-label">Espécie</label><br />
-                <input type="radio" value="1" asp-for="TipoEspecie" checked /> Canina
-                <input type="radio" value="2" asp-for="TipoEspecie" /> Felina
+                <label asp-for="Animal.TipoEspecie" class="control-label">Espécie</label><br />
+                <input type="radio" value="1" asp-for="Animal.TipoEspecie" checked /> Canina
+                <input type="radio" value="2" asp-for="Animal.TipoEspecie" /> Felina
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="TipoPelo" class="texto-login-custom">Pelagem</label>
-                <select required id="Pelo" asp-for="TipoPelo" asp-items="Html.GetEnumSelectList<ETipoPelo>()" class="form-control mb-2">
+                <label asp-for="Animal.TipoPelo" class="texto-login-custom">Pelagem</label>
+                <select required id="Pelo" asp-for="Animal.TipoPelo" asp-items="Html.GetEnumSelectList<ETipoPelo>()" class="form-control mb-2">
                     <option selected value="">Escolha uma Pelagem...</option>
                 </select>
             </div>

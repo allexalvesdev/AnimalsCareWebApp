@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WebAppVeterinaria.Entity
+﻿namespace WebAppVeterinaria.Entity
 {
     public enum ETipoEspecie
     {
@@ -16,6 +11,7 @@ namespace WebAppVeterinaria.Entity
         Maxo = 1,
         Femea = 2
     }
+
     public enum ETipoPelo
     {
         PeloLongo = 1,
