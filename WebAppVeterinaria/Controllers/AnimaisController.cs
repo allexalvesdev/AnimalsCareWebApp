@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using X.PagedList;
 
 namespace WebAppVeterinaria.Controllers
 {
+    [Authorize]
     public class AnimaisController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -42,42 +44,14 @@ namespace WebAppVeterinaria.Controllers
             return View("Index", model);
         }
 
-        //[HttpGet]
-        //public IActionResult Create()
-        //{
-        //    var listaClientes = _context.Clientes
-        //        .Select(clientes => new SelectListItem { Value = clientes.Id.ToString(), Text = clientes.NomeCompleto })
-        //        .ToList();
-
-        //    return View(new AnimalViewModel { Animal = new Animal(), ClienteSelect = listaClientes });
-        //}
-
-
-
-        //[HttpPost]
-        //public async Task<IActionResult> Create(Animal animal, int ClienteId)
-        //{
-        //    if (!ModelState.IsValid) return View(animal);
-
-        //    _context.Animais.Add(animal);
-
-        //    animal.Cliente = await _context.Clientes.FindAsync(ClienteId);
-
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToAction("Index");
-        //}
-
-        // GET: Animals/Create
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto");
             return View();
         }
 
-        // POST: Animals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Animal animal)

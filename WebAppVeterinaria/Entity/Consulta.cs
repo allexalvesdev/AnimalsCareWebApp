@@ -9,10 +9,18 @@ namespace WebAppVeterinaria.Entity
         [Key]
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        [Required(ErrorMessage = "Escolha uma data para consulta")]
         public DateTime DataConsulta { get; set; }
         public DateTime DataRetorno { get; set; }
+
+        [Required(ErrorMessage = "O Campo {0} é obrigatório")]
+        [StringLength(500, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Descricao { get; set; }
         public bool Retorno { get; set; }
+
+        [Required(ErrorMessage = "O Campo {0} é obrigatório")]
+        [StringLength(500, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Observacao { get; set; }
 
         //Dados Pet

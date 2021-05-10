@@ -1,17 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
-using WebAppVeterinaria.ViewModels;
 using X.PagedList;
 
 namespace WebAppVeterinaria.Controllers
 {
+    [Authorize]
     public class ConsultasController : Controller
     {
         private readonly ApplicationDbContext _context;
