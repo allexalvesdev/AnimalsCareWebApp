@@ -1,0 +1,95 @@
+﻿@model WebAppVeterinaria.Entity.Animal
+
+@{
+    ViewData["Title"] = "Excluir";
+}
+
+<section class="top-padding background-content vh-100">
+    <div class="container">
+
+        <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+            <h1>Excluir</h1>
+
+            <div class="col-md-12">
+                <h3 class="alert-danger">Você tem certeza que deseja excluir este animal?</h3>
+            </div>
+
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Raca)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Raca)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Idade)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Idade)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Peso)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Peso)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Observacao)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Observacao)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.TipoSexo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TipoSexo)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.TipoEspecie)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TipoEspecie)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.TipoPelo)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.TipoPelo)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Nascimento)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Nascimento)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayName("Cliente")
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Cliente.NomeCompleto)
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete">
+                    <input type="submit" value="Excluir" class="btn btn-danger" />
+                    <a class="btn btn-light" asp-action="Index">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

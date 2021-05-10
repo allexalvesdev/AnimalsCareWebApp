@@ -33,7 +33,11 @@ namespace WebAppVeterinaria.Controllers
         {
             var search = Request.Query["Search"].ToString();
 
-            var consultas = _context.Consultas.Include(c => c.Cliente).Include(c => c.Veterinario).OrderBy(c => c.DataConsulta).Where(c => c.Cliente.NomeCompleto.Contains(search));
+            var consultas = _context.Consultas
+                .Include(c => c.Cliente)
+                .Include(c => c.Veterinario)
+                .OrderBy(c => c.DataConsulta)
+                .Where(c => c.Cliente.NomeCompleto.Contains(search));
 
             PagedList<Consulta> model = new PagedList<Consulta>(consultas, page, pageSize);
 
@@ -46,52 +50,62 @@ namespace WebAppVeterinaria.Controllers
             if (id == null) return NotFound();
 
             var detalhes = await _context.Consultas
-                 .Include(c => c.Cliente)
+                .Include(c => c.Cliente)
                 .Include(c => c.Veterinario)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             return View(detalhes);
         }
 
-        [HttpGet]
         public IActionResult Create()
         {
-            var listaClientes = _context.Clientes.Select(clientes => new SelectListItem { Value = clientes.Id.ToString(), Text = clientes.NomeCompleto }).ToList();
-            var listaVeterinarios = _context.Veterinarios.Select(veterinarios => new SelectListItem { Value = veterinarios.Id.ToString(), Text = veterinarios.NomeCompleto }).ToList();
-
-            return View(new ConsultaViewModel { Consulta = new Consulta(), ClienteSelect = listaClientes, VeterinarioSelect = listaVeterinarios });
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto");
+            ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto");
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Consulta consulta, int ClienteId, int VeterinarioId)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Consulta consulta)
         {
-            if (!ModelState.IsValid) return View(consulta);
-
-            _context.Consultas.Add(consulta);
-
-            consulta.Cliente = _context.Clientes.Find(ClienteId);
-            consulta.Veterinario = _context.Veterinarios.Find(VeterinarioId);
-
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _context.Consultas.Add(consulta);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
+            ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
+            return View(consulta);
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
 
             var consulta = await _context.Consultas.FindAsync(id);
-
+            if (consulta == null)
+            {
+                return NotFound();
+            }
+            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
+            ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
             return View(consulta);
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(Consulta consulta)
         {
-            if (!ModelState.IsValid) return View(consulta);
-
+            if (!ModelState.IsValid)
+            {
+                ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
+                ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
+                return View(consulta);
+            }
             _context.Consultas.Update(consulta);
 
             await _context.SaveChangesAsync();
