@@ -56,12 +56,16 @@ namespace WebAppVeterinaria.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Cliente cliente)
         {
-            if (!ModelState.IsValid) return View(cliente);
+            if (!ModelState.IsValid)
+            {
+                ViewData["error"] = "Houve um erro ao cadastraro o cliente";
+                return View(cliente);
+            }
 
             _context.Clientes.Add(cliente);
 
             await _context.SaveChangesAsync();
-
+            TempData["success"] = "Cliente cadastrado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -85,6 +89,7 @@ namespace WebAppVeterinaria.Controllers
 
             await _context.SaveChangesAsync();
 
+            ViewData["update"] = "Cliente atualizado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -101,13 +106,18 @@ namespace WebAppVeterinaria.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(Cliente cliente)
         {
-            if (!ModelState.IsValid) return View(cliente);
+            if (!ModelState.IsValid)
+            {
+                return View(cliente);
+            }
+            else
+            {
+                _context.Clientes.Remove(cliente);
+                await _context.SaveChangesAsync();
 
-            _context.Clientes.Remove(cliente);
-
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
+                ViewData["delete"] = "Cliente excluído com Sucesso";
+                return RedirectToAction("Index");
+            }
         }
 
     }

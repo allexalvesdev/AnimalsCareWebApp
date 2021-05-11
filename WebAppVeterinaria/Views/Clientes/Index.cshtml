@@ -17,7 +17,7 @@
                         <button type="submit" name="name" value="" class="btn btn-success"><i class="fas fa-search"></i></button>
                         <a class="align-self-center mt-1" asp-action="Index">Limpar pesquisa</a>
                     </p>
-                    
+
                 </div>
                 <div class="col-md-4">
                     <div class="text-right">
@@ -26,6 +26,24 @@
                 </div>
             </div>
         </form>
+
+        @if (TempData["success"] != null)
+        {
+            <div id="msg_box" class="alert alert-success">@ViewData["success"]<span>Cliente cadastrado com Sucesso</span></div>
+        }
+
+        @if (ViewData["error"] != null)
+        {
+            <div class="alert alert-error">@ViewData["error"]<span>Houve um erro ao cadastraro o cliente</span></div>
+        }
+        @if (TempData["update"] != null)
+        {
+            <div id="msg_box" class="alert alert-success">@ViewData["success"]<span>Cliente atualizado com Sucesso</span></div>
+        }
+        @if (TempData["delete"] != null)
+        {
+            <div id="msg_box" class="alert alert-success">@ViewData["success"]<span>Cliente excluído com Sucesso</span></div>
+        }
 
         <table class="table shadow p-3 rounded">
             <thead class="table-light bg-light rounded text-color-secondary">

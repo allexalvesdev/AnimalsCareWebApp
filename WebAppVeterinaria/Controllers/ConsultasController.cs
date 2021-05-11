@@ -71,10 +71,13 @@ namespace WebAppVeterinaria.Controllers
             {
                 _context.Consultas.Add(consulta);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "Consulta cadastrado com Sucesso";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
+
+            ViewData["error"] = "Houve um erro ao cadastraro a consulta";
             return View(consulta);
         }
 
@@ -109,6 +112,7 @@ namespace WebAppVeterinaria.Controllers
 
             await _context.SaveChangesAsync();
 
+            ViewData["upate"] = "Consulta atualizada com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -135,7 +139,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Consultas.Remove(consulta);
 
             await _context.SaveChangesAsync();
-
+            ViewData["delete"] = "Consulta excluída com Sucesso";
             return RedirectToAction("Index");
         }
     }

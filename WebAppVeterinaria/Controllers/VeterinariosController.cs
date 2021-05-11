@@ -42,12 +42,16 @@ namespace WebAppVeterinaria.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Veterinario veterinario)
         {
-            if (!ModelState.IsValid) return View(veterinario);
-
+            if (!ModelState.IsValid)
+            {
+                ViewData["error"] = "Houve um erro ao cadastraro a consulta";
+                return View(veterinario);
+            }
             _context.Veterinarios.Add(veterinario);
 
             await _context.SaveChangesAsync();
 
+            TempData["success"] = "Veterinário cadastrado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -79,6 +83,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Veterinarios.Update(veterinario);
             await _context.SaveChangesAsync();
 
+            TempData["update"] = "Veterinário atualizado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -100,6 +105,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Veterinarios.Remove(veterinario);
             await _context.SaveChangesAsync();
 
+            TempData["delete"] = "Veterinário excluído com Sucesso";
             return RedirectToAction("Index");
         }
     }

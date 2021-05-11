@@ -25,7 +25,6 @@ namespace WebAppVeterinaria.Entity
         [Required(ErrorMessage = "Digite um peso")]
         public string Peso { get; set; }
 
-        [Required(ErrorMessage = "O Campo {0} é obrigatório")]
         [StringLength(500, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Observacao { get; set; }
         public ETipoSexo TipoSexo { get; set; }
