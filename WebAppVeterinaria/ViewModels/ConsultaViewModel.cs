@@ -1,19 +1,29 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using WebAppVeterinaria.Entity;
 
-namespace WebAppVeterinaria.Entity
+namespace WebAppVeterinaria.ViewModels
 {
-    public class Consulta
+    public class ConsultaViewModel
     {
         //Dados Consulta
-
         [Key]
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        [Required(ErrorMessage = "Escolha uma data para consulta")]
         public DateTime DataConsulta { get; set; }
         public DateTime DataRetorno { get; set; }
+
+        [Required(ErrorMessage = "O Campo {0} é obrigatório")]
+        [StringLength(500, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Descricao { get; set; }
         public bool Retorno { get; set; }
+
+        [Required(ErrorMessage = "O Campo {0} é obrigatório")]
+        [StringLength(500, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Observacao { get; set; }
 
         //Dados Pet
@@ -33,6 +43,5 @@ namespace WebAppVeterinaria.Entity
         /*Relacao EF*/
         public virtual Cliente Cliente { get; set; }
         public virtual Veterinario Veterinario { get; set; }
-
     }
 }

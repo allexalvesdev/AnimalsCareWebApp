@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAppVeterinaria.Data;
 
 namespace WebAppVeterinaria.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210512130003_AttTabelaClienteAttri")]
+    partial class AttTabelaClienteAttri
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,21 +232,28 @@ namespace WebAppVeterinaria.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Idade")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<DateTime>("Nascimento")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("varchar(50)");
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("Observacao")
-                        .HasColumnType("varchar(250)");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("Peso")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Raca")
+                        .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.Property<int>("TipoEspecie")
@@ -389,6 +398,8 @@ namespace WebAppVeterinaria.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
                     b.Property<decimal>("Preco")
@@ -410,37 +421,56 @@ namespace WebAppVeterinaria.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Cep")
-                        .HasColumnType("varchar(20)");
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.Property<string>("Cidade")
-                        .HasColumnType("varchar(100)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("CodigoCRMV")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Complemento")
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("varchar(20)");
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("varchar(11)");
 
                     b.Property<string>("Estado")
-                        .HasColumnType("varchar(20)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Logradouro")
-                        .HasColumnType("varchar(250)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("NomeCompleto")
+                        .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Numero")
-                        .HasColumnType("varchar(50)");
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("Rg")
-                        .HasColumnType("varchar(50)");
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.HasKey("Id");
 

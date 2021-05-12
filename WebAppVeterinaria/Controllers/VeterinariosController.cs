@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
+using WebAppVeterinaria.ViewModels;
 using X.PagedList;
 namespace WebAppVeterinaria.Controllers
 {
@@ -65,13 +66,26 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, VeterinarioViewModel veterinarioViewModel)
         {
             if (id == null) return NotFound();
 
             var veterinario = await _context.Veterinarios.FindAsync(id);
 
-            return View(veterinario);
+            veterinarioViewModel.NomeCompleto = veterinario.NomeCompleto;
+            veterinarioViewModel.Rg = veterinario.Rg;
+            veterinarioViewModel.Cpf = veterinario.Cpf;
+            veterinarioViewModel.CodigoCRMV = veterinario.CodigoCRMV;
+            veterinarioViewModel.Ativo = veterinario.Ativo;
+            veterinarioViewModel.Cep = veterinario.Cep;
+            veterinarioViewModel.Logradouro = veterinario.Logradouro;
+            veterinarioViewModel.Bairro = veterinario.Bairro;
+            veterinarioViewModel.Numero = veterinario.Numero;
+            veterinarioViewModel.Complemento = veterinario.Complemento;
+            veterinarioViewModel.Cidade = veterinario.Cidade;
+            veterinarioViewModel.Estado = veterinario.Estado;
+
+            return View(veterinarioViewModel);
 
         }
 

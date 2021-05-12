@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebAppVeterinaria.Entity;
+using WebAppVeterinaria.ViewModels;
 
 namespace WebAppVeterinaria.Data
 {

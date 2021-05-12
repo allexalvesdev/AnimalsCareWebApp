@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
+using WebAppVeterinaria.ViewModels;
 using X.PagedList;
 
 namespace WebAppVeterinaria.Controllers
@@ -82,7 +83,7 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, ConsultaViewModel consultaViewModel)
         {
             if (id == null)
             {
@@ -90,13 +91,30 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var consulta = await _context.Consultas.FindAsync(id);
+
+            consultaViewModel.DataCadastro = consulta.DataCadastro;
+            consultaViewModel.DataConsulta = consulta.DataConsulta;
+            consultaViewModel.DataRetorno = consulta.DataRetorno;
+            consultaViewModel.Descricao = consulta.Descricao;
+            consultaViewModel.Retorno = consulta.Retorno;
+            consultaViewModel.Observacao = consulta.Observacao;
+            consultaViewModel.NomeAnimal = consulta.NomeAnimal;
+            consultaViewModel.RacaAnimal = consulta.RacaAnimal;
+            consultaViewModel.TipoSexo = consulta.TipoSexo;
+            consultaViewModel.TipoEspecie = consulta.TipoEspecie;
+            consultaViewModel.Idade = consulta.Idade;
+            consultaViewModel.Peso = consulta.Peso;
+            consultaViewModel.HistoricoClinicoAnimal = consulta.HistoricoClinicoAnimal;
+
             if (consulta == null)
             {
                 return NotFound();
             }
+
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
-            return View(consulta);
+
+            return View(consultaViewModel);
         }
 
         [HttpPost]

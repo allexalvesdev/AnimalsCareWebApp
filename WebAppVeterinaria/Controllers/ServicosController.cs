@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
+using WebAppVeterinaria.ViewModels;
 
 namespace WebAppVeterinaria.Controllers
 {
@@ -61,11 +62,14 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, ServicoViewModel servicoViewModel)
         {
             var servico = await _context.Servicos.FindAsync(id);
 
-            return View(servico);
+            servicoViewModel.Descricao = servico.Descricao;
+            servicoViewModel.Preco = servico.Preco;
+
+            return View(servicoViewModel);
         }
 
         [HttpPost]

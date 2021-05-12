@@ -71,7 +71,7 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(AnimalViewModel animalViewModel,int? id)
         {
             if (id == null)
             {
@@ -79,12 +79,26 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var animal = await _context.Animais.FindAsync(id);
+
+            animalViewModel.Nome = animal.Nome;
+            animalViewModel.Raca = animal.Raca;
+            animalViewModel.Idade = animal.Idade;
+            animalViewModel.Peso = animal.Peso;
+            animalViewModel.Observacao = animal.Observacao;
+            animalViewModel.TipoPelo = animal.TipoPelo;
+            animalViewModel.TipoSexo = animal.TipoSexo;
+            animalViewModel.TipoEspecie = animal.TipoEspecie;
+            animalViewModel.Nascimento = animal.Nascimento;
+
+
             if (animal == null)
             {
                 return NotFound();
             }
+
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", animal.ClienteId);
-            return View(animal);
+
+            return View(animalViewModel);
         }
 
         [HttpPost]

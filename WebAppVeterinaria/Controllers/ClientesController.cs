@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
+using WebAppVeterinaria.ViewModels;
 using X.PagedList;
 
 namespace WebAppVeterinaria.Controllers
@@ -58,7 +59,7 @@ namespace WebAppVeterinaria.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewData["error"] = "Houve um erro ao cadastraro o cliente";
+                TempData["error"] = "Houve um erro ao cadastraro o cliente";
                 return View(cliente);
             }
 
@@ -71,13 +72,24 @@ namespace WebAppVeterinaria.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(ClienteViewModel clienteViewModel, int id)
         {
-            if (id == null) return NotFound();
-
             var cliente = await _context.Clientes.FindAsync(id);
 
-            return View(cliente);
+            clienteViewModel.NomeCompleto = cliente.NomeCompleto;
+            clienteViewModel.Rg = cliente.Rg;
+            clienteViewModel.Cpf = cliente.Cpf;
+            clienteViewModel.Telefone = cliente.Telefone;
+            clienteViewModel.Celular = cliente.Celular;
+            clienteViewModel.Cep = cliente.Cep;
+            clienteViewModel.Logradouro = cliente.Logradouro;
+            clienteViewModel.Bairro = cliente.Bairro;
+            clienteViewModel.Numero = cliente.Numero;
+            clienteViewModel.Complemento = cliente.Complemento;
+            clienteViewModel.Cidade = cliente.Cidade;
+            clienteViewModel.Estado = cliente.Estado;
+
+            return View(clienteViewModel);
         }
 
         [HttpPost]
@@ -89,7 +101,7 @@ namespace WebAppVeterinaria.Controllers
 
             await _context.SaveChangesAsync();
 
-            ViewData["update"] = "Cliente atualizado com Sucesso";
+            TempData["update"] = "Cliente atualizado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -115,7 +127,7 @@ namespace WebAppVeterinaria.Controllers
                 _context.Clientes.Remove(cliente);
                 await _context.SaveChangesAsync();
 
-                ViewData["delete"] = "Cliente excluído com Sucesso";
+                TempData["delete"] = "Cliente excluído com Sucesso";
                 return RedirectToAction("Index");
             }
         }
