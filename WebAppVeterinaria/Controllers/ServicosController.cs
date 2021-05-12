@@ -62,9 +62,11 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int id, ServicoViewModel servicoViewModel)
+        public async Task<IActionResult> Edit(int id)
         {
             var servico = await _context.Servicos.FindAsync(id);
+
+            var servicoViewModel = new ServicoViewModel();
 
             servicoViewModel.Descricao = servico.Descricao;
             servicoViewModel.Preco = servico.Preco;

@@ -83,7 +83,7 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id, ConsultaViewModel consultaViewModel)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -91,6 +91,8 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var consulta = await _context.Consultas.FindAsync(id);
+
+            var consultaViewModel = new ConsultaViewModel();
 
             consultaViewModel.DataCadastro = consulta.DataCadastro;
             consultaViewModel.DataConsulta = consulta.DataConsulta;

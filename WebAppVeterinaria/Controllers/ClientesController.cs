@@ -72,10 +72,12 @@ namespace WebAppVeterinaria.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Edit(ClienteViewModel clienteViewModel, int id)
+        public async Task<IActionResult> Edit(int id)
         {
             var cliente = await _context.Clientes.FindAsync(id);
 
+            var clienteViewModel = new ClienteViewModel();
+            
             clienteViewModel.NomeCompleto = cliente.NomeCompleto;
             clienteViewModel.Rg = cliente.Rg;
             clienteViewModel.Cpf = cliente.Cpf;
@@ -88,50 +90,51 @@ namespace WebAppVeterinaria.Controllers
             clienteViewModel.Complemento = cliente.Complemento;
             clienteViewModel.Cidade = cliente.Cidade;
             clienteViewModel.Estado = cliente.Estado;
+        
 
             return View(clienteViewModel);
-        }
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> Edit(Cliente cliente)
+    [HttpPost]
+    public async Task<IActionResult> Edit(Cliente cliente)
+    {
+        if (!ModelState.IsValid) return View(cliente);
+
+        _context.Clientes.Update(cliente);
+
+        await _context.SaveChangesAsync();
+
+        TempData["update"] = "Cliente atualizado com Sucesso";
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id == null) return NotFound();
+
+        var cliente = await _context.Clientes.FindAsync(id);
+
+        return View(cliente);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Delete(Cliente cliente)
+    {
+        if (!ModelState.IsValid)
         {
-            if (!ModelState.IsValid) return View(cliente);
-
-            _context.Clientes.Update(cliente);
-
-            await _context.SaveChangesAsync();
-
-            TempData["update"] = "Cliente atualizado com Sucesso";
-            return RedirectToAction("Index");
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var cliente = await _context.Clientes.FindAsync(id);
-
             return View(cliente);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Delete(Cliente cliente)
+        else
         {
-            if (!ModelState.IsValid)
-            {
-                return View(cliente);
-            }
-            else
-            {
-                _context.Clientes.Remove(cliente);
-                await _context.SaveChangesAsync();
+            _context.Clientes.Remove(cliente);
+            await _context.SaveChangesAsync();
 
-                TempData["delete"] = "Cliente excluído com Sucesso";
-                return RedirectToAction("Index");
-            }
+            TempData["delete"] = "Cliente excluído com Sucesso";
+            return RedirectToAction("Index");
         }
-
     }
+
+}
 
 }

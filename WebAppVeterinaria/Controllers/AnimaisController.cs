@@ -71,7 +71,7 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(AnimalViewModel animalViewModel,int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -79,6 +79,8 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var animal = await _context.Animais.FindAsync(id);
+
+            var animalViewModel = new AnimalViewModel();
 
             animalViewModel.Nome = animal.Nome;
             animalViewModel.Raca = animal.Raca;

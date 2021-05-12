@@ -66,11 +66,13 @@ namespace WebAppVeterinaria.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id, VeterinarioViewModel veterinarioViewModel)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
 
             var veterinario = await _context.Veterinarios.FindAsync(id);
+
+            var veterinarioViewModel = new VeterinarioViewModel();
 
             veterinarioViewModel.NomeCompleto = veterinario.NomeCompleto;
             veterinarioViewModel.Rg = veterinario.Rg;
