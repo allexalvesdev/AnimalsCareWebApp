@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <p class="form-inline">
-                        <input type="search" name="search" value="@ViewBag.Search" placeholder="Pesquise por Nome..." style="width:80%" class="form-control" />
+                        <input type="search" name="search" value="@ViewBag.Search" placeholder="Pesquise por Nome do pet ou Cliente..." style="width:80%" class="form-control" />
                         <button type="submit" name="name" value="" class="btn btn-success"><i class="fas fa-search"></i></button>
                         <a class="align-self-center mt-1" asp-action="Index">Limpar pesquisa</a>
                     </p>
@@ -49,7 +49,7 @@
             <thead class="table-light bg-light rounded text-color-secondary">
                 <tr>
                     <th>
-                        @Html.DisplayName("Nome")
+                        @Html.DisplayName("Nome do Pet")
                     </th>
                     <th>
                         @Html.DisplayName("Raça")
