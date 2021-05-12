@@ -39,6 +39,8 @@ namespace WebAppVeterinaria.Controllers
                 .OrderBy(c => c.DataConsulta)
                 .Where(c => c.Cliente.NomeCompleto.Contains(search));
 
+
+
             PagedList<Consulta> model = new PagedList<Consulta>(consultas, page, pageSize);
 
             return View("Index", model);
@@ -72,13 +74,13 @@ namespace WebAppVeterinaria.Controllers
             {
                 _context.Consultas.Add(consulta);
                 await _context.SaveChangesAsync();
-                TempData["success"] = "Consulta cadastrado com Sucesso";
+                TempData["CreateSuccess"] = "Consulta cadastrado com Sucesso";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
 
-            ViewData["error"] = "Houve um erro ao cadastraro a consulta";
+            TempData["error"] = "Houve um erro ao cadastraro a consulta";
             return View(consulta);
         }
 
@@ -94,7 +96,7 @@ namespace WebAppVeterinaria.Controllers
 
             var consultaViewModel = new ConsultaViewModel();
 
-            consultaViewModel.DataCadastro = consulta.DataCadastro;
+            consultaViewModel.DataCadastro = consulta.DataCadastro; 
             consultaViewModel.DataConsulta = consulta.DataConsulta;
             consultaViewModel.DataRetorno = consulta.DataRetorno;
             consultaViewModel.Descricao = consulta.Descricao;
@@ -132,7 +134,7 @@ namespace WebAppVeterinaria.Controllers
 
             await _context.SaveChangesAsync();
 
-            ViewData["upate"] = "Consulta atualizada com Sucesso";
+            TempData["updateSuccess"] = "Consulta atualizada com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -159,7 +161,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Consultas.Remove(consulta);
 
             await _context.SaveChangesAsync();
-            ViewData["delete"] = "Consulta excluída com Sucesso";
+            TempData["deleteSuccess"] = "Consulta excluída com Sucesso";
             return RedirectToAction("Index");
         }
     }

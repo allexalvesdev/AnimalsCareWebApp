@@ -52,7 +52,7 @@ namespace WebAppVeterinaria.Controllers
 
             await _context.SaveChangesAsync();
 
-            TempData["success"] = "Veterinário cadastrado com Sucesso";
+            TempData["createSuccess"] = "Veterinário cadastrado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -99,7 +99,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Veterinarios.Update(veterinario);
             await _context.SaveChangesAsync();
 
-            TempData["update"] = "Veterinário atualizado com Sucesso";
+            TempData["updateSuccess"] = "Veterinário atualizado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -121,7 +121,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Veterinarios.Remove(veterinario);
             await _context.SaveChangesAsync();
 
-            TempData["delete"] = "Veterinário excluído com Sucesso";
+            TempData["deleteSuccess"] = "Veterinário excluído com Sucesso";
             return RedirectToAction("Index");
         }
     }

@@ -43,16 +43,18 @@
                                     <span asp-validation-for="DataConsulta" class="text-danger"></span>
                                 </div>
                                 <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Retorno">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Retorno" onclick="Mudarestado('retorno')">
                                     <label class="custom-control-label" for="customSwitch1">@Html.DisplayNameFor(model => model.Retorno)</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="DataRetorno" class="control-label"></label>
-                                    <input asp-for="DataRetorno" class="form-control" />
-                                    <span asp-validation-for="DataRetorno" class="text-danger"></span>
+                                <div id="retorno" class="hidden" style="display:none;">
+                                    <div class="form-group">
+                                        <label asp-for="DataRetorno" class="control-label"></label>
+                                        <input asp-for="DataRetorno" class="form-control focus" autofocus />
+                                        <span asp-validation-for="DataRetorno" class="text-danger"></span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Descricao" class="control-label"></label>
@@ -130,4 +132,15 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+<script>
+    function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+        if (display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
+</script>
 }

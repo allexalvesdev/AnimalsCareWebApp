@@ -27,22 +27,22 @@
             </div>
         </form>
 
-        @if (TempData["success"] != null)
+        @if (TempData["createSuccess"] != null)
         {
-            <div id="msg_box" class="alert alert-success">@ViewData["success"]<span>Cliente cadastrado com Sucesso</span></div>
+            <div id="msg_box" class="alert alert-success">@TempData["createSuccess"]</div>
         }
 
-        @if (ViewData["error"] != null)
+        @if (TempData["error"] != null)
         {
-            <div class="alert alert-error">@ViewData["error"]<span>Houve um erro ao cadastraro o cliente</span></div>
+            <div class="alert alert-error">@TempData["error"]</div>
         }
-        @if (TempData["update"] != null)
+        @if (TempData["updateSuccess"] != null)
         {
-            <div id="msg_box" class="alert alert-success">@ViewData["success"]<span>Cliente atualizado com Sucesso</span></div>
+            <div id="msg_box" class="alert alert-success">@TempData["updateSuccess"]</div>
         }
-        @if (TempData["delete"] != null)
+        @if (TempData["deleteSuccess"] != null)
         {
-            <div id="msg_box" class="alert alert-success">@ViewData["success"]<span>Cliente excluído com Sucesso</span></div>
+            <div id="msg_box" class="alert alert-success">@TempData["deleteSuccess"]</div>
         }
 
         <table class="table shadow p-3 rounded">

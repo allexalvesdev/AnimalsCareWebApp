@@ -49,7 +49,7 @@ namespace WebAppVeterinaria.Controllers
                 _context.Servicos.Add(servico);
                 await _context.SaveChangesAsync();
 
-                TempData["success"] = "Serviço cadastrado com Sucesso";
+                TempData["createSuccess"] = "Serviço cadastrado com Sucesso";
                 return RedirectToAction(nameof(Index));
                 
 
@@ -82,7 +82,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Servicos.Update(servico);
             await _context.SaveChangesAsync();
 
-            TempData["update"] = "Serviço atualizado com Sucesso";
+            TempData["updateSuccess"] = "Serviço atualizado com Sucesso";
             return RedirectToAction("Index");
         }
 
@@ -100,7 +100,7 @@ namespace WebAppVeterinaria.Controllers
             _context.Servicos.Remove(servico);
             await _context.SaveChangesAsync();
 
-            TempData["delete"] = "Serviço excluído com Sucesso";
+            TempData["deleteSuccess"] = "Serviço excluído com Sucesso";
             return RedirectToAction("Index");
         }
     }

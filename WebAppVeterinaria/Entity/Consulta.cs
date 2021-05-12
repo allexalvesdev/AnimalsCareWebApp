@@ -11,7 +11,7 @@ namespace WebAppVeterinaria.Entity
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; } = DateTime.Now;
         public DateTime DataConsulta { get; set; }
-        public DateTime DataRetorno { get; set; }
+        public Nullable<DateTime> DataRetorno { get; set; } = null;
         public string Descricao { get; set; }
         public bool Retorno { get; set; }
         public string Observacao { get; set; }
