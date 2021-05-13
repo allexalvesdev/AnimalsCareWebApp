@@ -60,5 +60,7 @@ namespace WebAppVeterinaria.ViewModels
 
         /*Relacao EF*/
         public virtual IEnumerable<Consulta> Consultas { get; set; }
+        public virtual ApplicationUser Usuario { get; set; }
+        public string UsuarioId { get; set; }
     }
 }

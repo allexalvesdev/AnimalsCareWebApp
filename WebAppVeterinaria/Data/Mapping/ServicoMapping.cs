@@ -15,6 +15,12 @@ namespace WebAppVeterinaria.Data.Mapping
             builder.HasKey(s => s.Id);
 
             builder.Property(s => s.Descricao).HasColumnType("varchar(500)");
+
+            builder.HasOne(P => P.Usuario)
+                .WithMany()
+                .HasForeignKey(p => p.UsuarioId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

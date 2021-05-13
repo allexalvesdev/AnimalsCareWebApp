@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using WebAppVeterinaria.Entity;
 
 namespace WebAppVeterinaria.ViewModels
 {
@@ -16,5 +17,8 @@ namespace WebAppVeterinaria.ViewModels
         [Required(ErrorMessage = "O Campo {0} é obrigatório")]
         [DisplayName("Preço")]
         public decimal Preco { get; set; }
+
+        public virtual ApplicationUser Usuario { get; set; }
+        public string UsuarioId { get; set; }
     }
 }

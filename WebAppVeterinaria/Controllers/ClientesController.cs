@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,13 +8,16 @@ using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
 using WebAppVeterinaria.ViewModels;
 using X.PagedList;
+using System.Security.Claims;
+
 
 namespace WebAppVeterinaria.Controllers
 {
     [Authorize]
     public class ClientesController : Controller
     {
-        private readonly ApplicationDbContext _context;
+
+        private ApplicationDbContext _context;
 
         public ClientesController(ApplicationDbContext context)
         {
@@ -30,7 +34,14 @@ namespace WebAppVeterinaria.Controllers
         {
             var search = Request.Query["Search"].ToString();
 
-            var clientes = _context.Clientes.OrderBy(x => x.Id).Where(c => c.NomeCompleto.Contains(search));
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var clientes = _context.Clientes
+                .Include(c => c.Usuario)
+                .OrderBy(x => x.Id)
+                .Where(u => u.UsuarioId == userId)
+                .Where(c => c.NomeCompleto.Contains(search));
+
             PagedList<Cliente> model = new PagedList<Cliente>(clientes, page, pageSize);
 
             ViewBag.Search = search;
@@ -51,6 +62,7 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
 
@@ -60,9 +72,11 @@ namespace WebAppVeterinaria.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["error"] = "Houve um erro ao cadastraro o cliente";
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return View(cliente);
             }
 
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             _context.Clientes.Add(cliente);
 
             await _context.SaveChangesAsync();
@@ -76,8 +90,10 @@ namespace WebAppVeterinaria.Controllers
         {
             var cliente = await _context.Clientes.FindAsync(id);
 
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var clienteViewModel = new ClienteViewModel();
-            
+
             clienteViewModel.NomeCompleto = cliente.NomeCompleto;
             clienteViewModel.Rg = cliente.Rg;
             clienteViewModel.Cpf = cliente.Cpf;
@@ -90,51 +106,58 @@ namespace WebAppVeterinaria.Controllers
             clienteViewModel.Complemento = cliente.Complemento;
             clienteViewModel.Cidade = cliente.Cidade;
             clienteViewModel.Estado = cliente.Estado;
-        
+
 
             return View(clienteViewModel);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Edit(Cliente cliente)
-    {
-        if (!ModelState.IsValid) return View(cliente);
-
-        _context.Clientes.Update(cliente);
-
-        await _context.SaveChangesAsync();
-
-        TempData["updateSuccess"] = "Cliente atualizado com Sucesso";
-        return RedirectToAction("Index");
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> Delete(int? id)
-    {
-        if (id == null) return NotFound();
-
-        var cliente = await _context.Clientes.FindAsync(id);
-
-        return View(cliente);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Delete(Cliente cliente)
-    {
-        if (!ModelState.IsValid)
-        {
-            return View(cliente);
         }
-        else
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Cliente cliente)
         {
-            _context.Clientes.Remove(cliente);
+            if (!ModelState.IsValid)
+            {
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                return View(cliente);
+            }
+
+
+            _context.Clientes.Update(cliente);
+
             await _context.SaveChangesAsync();
 
-            TempData["deleteSuccess"] = "Cliente excluído com Sucesso";
+            TempData["updateSuccess"] = "Cliente atualizado com Sucesso";
             return RedirectToAction("Index");
         }
-    }
 
-}
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var cliente = await _context.Clientes
+                .Include(c => c.Usuario)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            return View(cliente);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Cliente cliente)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(cliente);
+            }
+            else
+            {
+                _context.Clientes.Remove(cliente);
+                await _context.SaveChangesAsync();
+
+                TempData["deleteSuccess"] = "Cliente excluído com Sucesso";
+                return RedirectToAction("Index");
+            }
+        }
+
+    }
 
 }

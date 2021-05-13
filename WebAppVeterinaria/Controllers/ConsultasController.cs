@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
@@ -32,10 +33,11 @@ namespace WebAppVeterinaria.Controllers
         public IActionResult Index(int page = 1, int pageSize = 10)
         {
             var search = Request.Query["Search"].ToString();
-
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var consultas = _context.Consultas
                 .Include(c => c.Cliente)
                 .Include(c => c.Veterinario)
+                .Where(u => u.UsuarioId == userId)
                 .OrderBy(c => c.DataConsulta)
                 .Where(c => c.Cliente.NomeCompleto.Contains(search));
 
@@ -63,6 +65,7 @@ namespace WebAppVeterinaria.Controllers
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto");
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto");
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
 
@@ -72,6 +75,7 @@ namespace WebAppVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _context.Consultas.Add(consulta);
                 await _context.SaveChangesAsync();
                 TempData["CreateSuccess"] = "Consulta cadastrado com Sucesso";
@@ -93,7 +97,7 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var consulta = await _context.Consultas.FindAsync(id);
-
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var consultaViewModel = new ConsultaViewModel();
 
             consultaViewModel.DataCadastro = consulta.DataCadastro; 
@@ -126,10 +130,13 @@ namespace WebAppVeterinaria.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
                 ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
                 return View(consulta);
             }
+
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             _context.Consultas.Update(consulta);
 
             await _context.SaveChangesAsync();

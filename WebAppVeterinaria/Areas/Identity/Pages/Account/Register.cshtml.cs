@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using WebAppVeterinaria.Entity;
 
 namespace WebAppVeterinaria.Areas.Identity.Pages.Account
 {
@@ -45,6 +46,12 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Senha")]
+            public string Nome { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "E-mail")]
@@ -74,7 +81,7 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser {  Nome = Input.Nome, UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

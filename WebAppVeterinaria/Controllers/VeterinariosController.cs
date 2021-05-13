@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
@@ -28,7 +29,12 @@ namespace WebAppVeterinaria.Controllers
         {
             var search = Request.Query["Search"].ToString();
 
-            var veterinarios = _context.Veterinarios.OrderBy(v => v.Id).Where(v => v.NomeCompleto.Contains(search));
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var veterinarios = _context.Veterinarios
+                .OrderBy(v => v.Id)
+                .Where(u => u.UsuarioId == userId)
+                .Where(v => v.NomeCompleto.Contains(search));
             PagedList<Veterinario> model = new PagedList<Veterinario>(veterinarios, page, pageSize);
 
             return View("Index", model);
@@ -37,6 +43,7 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
 
@@ -48,6 +55,7 @@ namespace WebAppVeterinaria.Controllers
                 ViewData["error"] = "Houve um erro ao cadastraro a consulta";
                 return View(veterinario);
             }
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             _context.Veterinarios.Add(veterinario);
 
             await _context.SaveChangesAsync();
@@ -71,7 +79,7 @@ namespace WebAppVeterinaria.Controllers
             if (id == null) return NotFound();
 
             var veterinario = await _context.Veterinarios.FindAsync(id);
-
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var veterinarioViewModel = new VeterinarioViewModel();
 
             veterinarioViewModel.NomeCompleto = veterinario.NomeCompleto;
@@ -96,6 +104,7 @@ namespace WebAppVeterinaria.Controllers
         {
             if (!ModelState.IsValid) return View(veterinario);
 
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             _context.Veterinarios.Update(veterinario);
             await _context.SaveChangesAsync();
 

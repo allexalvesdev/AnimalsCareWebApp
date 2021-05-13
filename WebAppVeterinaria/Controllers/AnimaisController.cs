@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
@@ -32,9 +33,12 @@ namespace WebAppVeterinaria.Controllers
         {
             var search = Request.Query["Search"].ToString();
 
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             var animais = _context.Animais
                 .Include(c => c.Cliente)
                 .OrderBy(x => x.Id)
+                .Where(u => u.UsuarioId == userId)
                 .Where(c => c.Nome.Contains(search) || c.Cliente.NomeCompleto.Contains(search));
 
             PagedList<Animal> model = new PagedList<Animal>(animais, page, pageSize);
@@ -48,6 +52,8 @@ namespace WebAppVeterinaria.Controllers
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto");
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             return View();
         }
 
@@ -62,9 +68,11 @@ namespace WebAppVeterinaria.Controllers
                 await _context.SaveChangesAsync();
 
                 TempData["createSuccess"] = "Animal cadastrado com Sucesso";
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", animal.ClienteId);
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             ViewData["error"] = "Houve um erro ao cadastraro a consulta";
             return View(animal);
@@ -79,6 +87,8 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var animal = await _context.Animais.FindAsync(id);
+
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var animalViewModel = new AnimalViewModel();
 
@@ -109,8 +119,12 @@ namespace WebAppVeterinaria.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", animal.ClienteId);
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return View(animal);
             }
+
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             _context.Animais.Update(animal);
             await _context.SaveChangesAsync();
 

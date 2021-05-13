@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
 using WebAppVeterinaria.Entity;
@@ -22,7 +24,8 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var lista = await _context.Servicos.ToListAsync();
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var lista = await _context.Servicos.Where(u => u.UsuarioId == userId).ToListAsync();
 
             return View(lista);
         }
@@ -38,6 +41,7 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
 
@@ -46,17 +50,17 @@ namespace WebAppVeterinaria.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 _context.Servicos.Add(servico);
                 await _context.SaveChangesAsync();
 
                 TempData["createSuccess"] = "Serviço cadastrado com Sucesso";
                 return RedirectToAction(nameof(Index));
-                
-
             }
             else
             {
                 ViewData["error"] = "Houve um erro ao cadastraro o serviço";
+                TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return View(servico);
             }
         }
@@ -65,6 +69,8 @@ namespace WebAppVeterinaria.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var servico = await _context.Servicos.FindAsync(id);
+
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var servicoViewModel = new ServicoViewModel();
 
@@ -79,6 +85,7 @@ namespace WebAppVeterinaria.Controllers
         {
             if (!ModelState.IsValid) return View(servico);
 
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             _context.Servicos.Update(servico);
             await _context.SaveChangesAsync();
 

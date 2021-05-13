@@ -19,5 +19,7 @@ namespace WebAppVeterinaria.Entity
 
         public int ClienteId { get; set; }
         public virtual Cliente Cliente { get; set; }
+        public virtual ApplicationUser Usuario { get; set; }
+        public string UsuarioId { get; set; }
     }
 }

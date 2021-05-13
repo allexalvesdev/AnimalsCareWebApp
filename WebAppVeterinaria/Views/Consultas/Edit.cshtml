@@ -116,6 +116,10 @@
                                     <textarea cols="40" rows="5" asp-for="HistoricoClinicoAnimal" class="form-control"> </textarea>
                                     <span asp-validation-for="HistoricoClinicoAnimal" class="text-danger"></span>
                                 </div>
+                                <div class="form-group d-none">
+                                    <label asp-for="UsuarioId" class="control-label"></label>
+                                    <input asp-for="UsuarioId" class="form-control" value="@TempData["UsuarioId"]" />
+                                </div>
                             </div>
                         </div>
                     </div>

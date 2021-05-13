@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAppVeterinaria.Data;
+using WebAppVeterinaria.Entity;
 
 namespace WebAppVeterinaria
 {
@@ -43,9 +44,7 @@ namespace WebAppVeterinaria
                 options.Password.RequireLowercase = false; //letra minuscula
 
             })
-
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
 
             services.AddControllersWithViews();
 

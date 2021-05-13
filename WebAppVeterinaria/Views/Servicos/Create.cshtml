@@ -24,6 +24,10 @@
                             <input asp-for="Preco" class="form-control" />
                             <span asp-validation-for="Preco" class="text-danger"></span>
                         </div>
+                        <div class="form-group d-none">
+                            <label asp-for="UsuarioId" class="control-label"></label>
+                            <input asp-for="UsuarioId" class="form-control" value="@TempData["UsuarioId"]" />
+                        </div>
                         <div class="col-md-6 p-0 m-0">
                             <div class="form-group mt-2">
                                 <input type="submit" value="Salvar" class="btn btn-success" />

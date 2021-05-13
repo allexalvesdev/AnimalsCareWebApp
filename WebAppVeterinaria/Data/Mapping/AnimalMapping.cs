@@ -20,6 +20,12 @@ namespace WebAppVeterinaria.Data.Mapping
             builder.Property(a => a.Peso).HasColumnType("varchar(50)");
             builder.Property(a => a.Observacao).HasColumnType("varchar(250)");
 
+            builder.HasOne(P => P.Usuario)
+                .WithMany()
+                .HasForeignKey(p => p.UsuarioId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.ToTable("Animais");
         }
     }

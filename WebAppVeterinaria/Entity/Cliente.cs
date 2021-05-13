@@ -21,7 +21,12 @@ namespace WebAppVeterinaria.Entity
         public string Cidade { get; set; }
         public string Estado { get; set; }
 
+
         /*Relacao EF*/
+
+        public virtual ApplicationUser Usuario { get; set; }
+        public string UsuarioId { get; set; }
+
         public virtual IEnumerable<Consulta> Consultas { get; set; }
         public virtual IEnumerable<Animal> Animais { get; set; }
     }

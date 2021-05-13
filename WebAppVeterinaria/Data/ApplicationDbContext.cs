@@ -13,6 +13,7 @@ namespace WebAppVeterinaria.Data
         public DbSet<Consulta> Consultas { get; set; }
         public DbSet<Animal> Animais { get; set; }
         public DbSet<Servico> Servicos { get; set; }
+        public DbSet<ApplicationUser> Usuarios { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

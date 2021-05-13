@@ -9,7 +9,7 @@ using WebAppVeterinaria.Entity;
 namespace WebAppVeterinaria.Data.Mapping
 {
     public class ConsulaMapping : IEntityTypeConfiguration<Consulta>
-    { 
+    {
         public void Configure(EntityTypeBuilder<Consulta> builder)
         {
             builder.HasKey(c => c.Id);
@@ -19,6 +19,12 @@ namespace WebAppVeterinaria.Data.Mapping
 
             builder.Property(c => c.Descricao).HasColumnType("varchar(1000)");
             builder.Property(c => c.HistoricoClinicoAnimal).HasColumnType("varchar(1000)");
+
+            builder.HasOne(P => P.Usuario)
+                .WithMany()
+                .HasForeignKey(p => p.UsuarioId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }
