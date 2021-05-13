@@ -7,6 +7,64 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+#topbar {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    background: #fff;
+}
+
+    #topbar .contact-info a {
+        line-height: 1;
+        color: #acacac;
+    }
+
+        #topbar .contact-info a:hover {
+            color: #79cb9a;
+        }
+
+    #topbar .contact-info i {
+        color: #79cb9a;
+        padding: 4px 4px 0 0;
+    }
+
+.contact-info.float-left {
+    color: #acacac;
+}
+
+#topbar .contact-info .fa-phone {
+    padding-left: 20px;
+    margin-left: 20px;
+    border-left: 1px solid #e9e9e947;
+}
+
+#topbar .contact-info .fa-heart {
+    padding-left: 20px;
+    margin-left: 20px;
+    border-left: 1px solid #e9e9e947;
+}
+
+#topbar .social-links a {
+    color: #79cb9a;
+    padding: 4px 12px;
+    display: inline-block;
+    line-height: 1px;
+    border-left: 1px solid #e9e9e924;
+    text-decoration: none;
+}
+
+    #topbar .social-links a:hover {
+        color: #29814c;
+    }
+
+    #topbar .social-links a:first-child {
+        border-left: 0;
+    }
+
+.emailwebsite:link {
+    text-decoration: none;
+}
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -91,8 +149,8 @@ body {
     position: relative;
 }
 
-.overflow-h{
-    overflow-y:hidden;
+.overflow-h {
+    overflow-y: hidden;
 }
 
 .text-color-primary {
