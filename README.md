@@ -12,8 +12,8 @@
 </ul>
 
 <h3>Funcionalidades</h3>
-Cadastro, Listagem, Detalhes, Atualização e Remoção de Animais </br>
-Cadastro, Listagem, Detalhes, Atualização e Remoção de Clientes </br>
-Cadastro, Listagem, Detalhes, Atualização e Remoção de Consultas </br>
+Cadastro, Listagem, Detalhes, Atualização, Busca e Remoção de Animais </br>
+Cadastro, Listagem, Detalhes, Atualização, Busca e Remoção de Clientes </br>
+Cadastro, Listagem, Detalhes, Atualização, Busca e Remoção de Consultas </br>
 Cadastro, Listagem, Detalhes, Atualização e Remoção de Serviços </br>
-Cadastro, Listagem, Detalhes, Atualização e Remoção de Veterinários </br>
+Cadastro, Listagem, Detalhes, Atualização, Busca e Remoção de Veterinários </br>
