@@ -4,10 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<section class="top-padding background-content">
+<section class="mt-5">
     <div class="container">
-        <h1>Nova Consulta</h1>
-        <hr />
         <div class="row">
             <div class="col-md-12">
                 <form asp-action="Create">
@@ -52,7 +50,7 @@
                                 <div id="retorno" class="hidden" style="display:none;">
                                     <div class="form-group">
                                         <label asp-for="DataRetorno" class="control-label"></label>
-                                        <input asp-for="DataRetorno" class="form-control focus" autofocus />
+                                        <input asp-for="DataRetorno" class="form-control focus" />
                                         <span asp-validation-for="DataRetorno" class="text-danger"></span>
                                     </div>
                                 </div>

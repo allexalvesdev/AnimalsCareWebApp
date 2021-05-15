@@ -1,14 +1,14 @@
 ﻿@model WebAppVeterinaria.Entity.Servico
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir Serviço";
 }
 
-<section class="top-padding background-content vh-100">
+<section class="mt-5">
     <div class="container">
 
         <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
-            <h1>Excluir</h1>
+            <h1>@ViewData["Title"]</h1>
 
             <div class="col-md-12">
                 <h3 class="alert-danger">Você tem certeza que deseja excluir este serviço?</h3>
@@ -17,22 +17,22 @@
             <div>
                 <hr />
                 <dl class="row">
-                    <dt class="col-sm-2">
+                    <dt class="col-sm-4">
                         @Html.DisplayNameFor(model => model.Id)
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.Id)
                     </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Descricao)
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Descrição")
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.Descricao)
                     </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Preco)
+                    <dt class="col-sm-4">
+                        @Html.DisplayName("Preço")
                     </dt>
-                    <dd class="col-sm-10">
+                    <dd class="col-sm-8">
                         @Html.DisplayFor(model => model.Preco)
                     </dd>
                 </dl>

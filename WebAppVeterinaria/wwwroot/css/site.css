@@ -173,10 +173,8 @@ body {
     user-select: none;
     background-color: #6FCF97;
     border: 1px solid transparent;
-    padding: 10px 50px;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 25px;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
@@ -192,10 +190,8 @@ body {
     user-select: none;
     background-color: rgba(35, 89, 178, 0.25);
     border: 1px solid #2359B2;
-    padding: 10px 50px;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 25px;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
@@ -223,7 +219,7 @@ body {
     padding: 5px 25px;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 25px;
+
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     margin-right: 8px;
 }
@@ -243,14 +239,13 @@ body {
     padding: 5px 25px;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 25px;
+
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 
 .background-content {
     background-color: #d8f8e5;
-    height:100vh;
 }
 
 .bg-primary-content {

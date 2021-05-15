@@ -12,7 +12,7 @@
     <link href="~/lib/animate.css/animate.css" rel="stylesheet" />
     <link href="~/css/pagedlist.css" rel="stylesheet" />
 </head>
-<body>
+<body class="background-content">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow border-0">
             <div class="container">
@@ -44,13 +44,13 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid pl-0 pr-0 overflow-h background-content">
-        <main role="main" class="">
+    <div class="container-fluid pl-0 pr-0 overflow-h h-auto">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-white">
         <div class="container">
             &copy; 2021 - <span class="text-color-primary">Animals</span><span class="text-color-secondary">Care</span> - Feito com <i class="fas fa-heart text-color-secondary"></i>
         </div>

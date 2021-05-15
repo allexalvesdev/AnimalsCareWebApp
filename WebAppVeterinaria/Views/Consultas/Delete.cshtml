@@ -1,14 +1,14 @@
 ﻿@model WebAppVeterinaria.Entity.Consulta
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir Consulta";
 }
 
-<section class="top-padding background-content vh-100">
+<section class="mt-5">
     <div class="container">
 
         <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
-            <h1>Excluir</h1>
+            <h1>@ViewData["Title"]</h1>
 
             <div class="col-md-12">
                 <h3 class="alert-danger">Você tem certeza que deseja excluir esta consulta?</h3>
@@ -18,25 +18,25 @@
                 <hr />
                 <dl class="row">
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DataCadastro)
+                        @Html.DisplayName("Data do Cadastro")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.DataCadastro)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DataConsulta)
+                        @Html.DisplayName("Data da Consulta")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.DataConsulta)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.DataRetorno)
+                        @Html.DisplayName("Data do Retorno")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.DataRetorno)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Descricao)
+                        @Html.DisplayName("Descrição")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.Descricao)
@@ -48,25 +48,25 @@
                         @Html.DisplayFor(model => model.Retorno)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Observacao)
+                        @Html.DisplayName("Observação")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.Observacao)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.NomeAnimal)
+                        @Html.DisplayName("Nome do pet")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.NomeAnimal)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.RacaAnimal)
+                        @Html.DisplayName("Raça")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.RacaAnimal)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.TipoSexo)
+                        @Html.DisplayName("Sexo")
                     </dt>
                     <dd class="col-sm-10">
                         @if (Model.TipoSexo.ToString() == "1")
@@ -83,7 +83,7 @@
                         }
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.TipoEspecie)
+                        @Html.DisplayName("Espécie")
                     </dt>
                     <dd class="col-sm-10">
                         @if (Model.TipoEspecie.ToString() == "1")
@@ -112,22 +112,22 @@
                         @Html.DisplayFor(model => model.Peso)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.HistoricoClinicoAnimal)
+                        @Html.DisplayName("Historico Clínico do Animal")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.HistoricoClinicoAnimal)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ClienteId)
+                        @Html.DisplayNameFor(model => model.Cliente)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ClienteId)
+                        @Html.DisplayFor(model => model.Cliente.NomeCompleto)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.VeterinarioId)
+                        @Html.DisplayName("Veterinário")
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.VeterinarioId)
+                        @Html.DisplayFor(model => model.Veterinario.NomeCompleto)
                     </dd>
                 </dl>
 

@@ -1,12 +1,10 @@
 ﻿@model WebAppVeterinaria.ViewModels.ConsultaViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Consulta";
 }
-<section class="top-padding background-content">
+<section class="mt-5">
     <div class="container">
-        <h1>Editar Consulta</h1>
-        <hr />
         <div class="row">
             <div class="col-md-12">
                 <form asp-action="Edit">
@@ -41,6 +39,7 @@
                                     <input asp-for="DataConsulta" class="form-control" />
                                     <span asp-validation-for="DataConsulta" class="text-danger"></span>
                                 </div>
+
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch1" asp-for="Retorno" onclick="Mudarestado('retorno')">
                                     <label class="custom-control-label" for="customSwitch1">@Html.DisplayNameFor(model => model.Retorno)</label>
@@ -48,9 +47,9 @@
                             </div>
 
                             <div class="col-md-6">
-                                @if (Model.DataRetorno != null)
+                                @if (Model.Retorno == false)
                                 {
-                                    <div id="retorno" class="hidden">
+                                    <div id="retorno" class="hidden" style="display:none;">
                                         <div class="form-group">
                                             <label asp-for="DataRetorno" class="control-label"></label>
                                             <input asp-for="DataRetorno" class="form-control" />
@@ -58,6 +57,18 @@
                                         </div>
                                     </div>
                                 }
+                                else
+                                {
+                                    <div id="retorno">
+                                        <div class="form-group">
+                                            <label asp-for="DataRetorno" class="control-label"></label>
+                                            <input asp-for="DataRetorno" class="form-control" />
+                                            <span asp-validation-for="DataRetorno" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                }
+
+
                                 <div class="form-group">
                                     <label asp-for="Descricao" class="control-label"></label>
                                     <input asp-for="Descricao" class="form-control" />
