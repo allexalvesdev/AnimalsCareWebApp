@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -51,7 +50,11 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto");
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto");
+
+
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             return View();
@@ -87,11 +90,13 @@ namespace WebAppVeterinaria.Controllers
             }
 
             var animal = await _context.Animais.FindAsync(id);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var animalViewModel = new AnimalViewModel();
 
+            animalViewModel.ClienteId = animal.ClienteId;
             animalViewModel.Nome = animal.Nome;
             animalViewModel.Raca = animal.Raca;
             animalViewModel.Idade = animal.Idade;
@@ -108,7 +113,7 @@ namespace WebAppVeterinaria.Controllers
                 return NotFound();
             }
 
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", animal.ClienteId);
+            ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", animal.ClienteId);
 
             return View(animalViewModel);
         }
@@ -118,7 +123,8 @@ namespace WebAppVeterinaria.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", animal.ClienteId);
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", animal.ClienteId);
                 TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 return View(animal);
             }

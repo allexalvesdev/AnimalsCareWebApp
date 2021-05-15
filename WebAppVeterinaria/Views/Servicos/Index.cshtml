@@ -1,16 +1,17 @@
 ﻿@model IEnumerable<WebAppVeterinaria.Entity.Servico>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Serviços";
 }
 
-<section class="top-padding background-content vh-100">
+<section class="">
     <div class="container">
 
-        <h3 class="text-color-primary mt-1">Lista de Serviços</h3>
-        <div class="mb-3">
-            <div class="text-right">
-                <a class="btn btn-primary text-right" asp-action="Create"><i class="fas fa-hand-holding-medical"></i> Novo Serviço</a>
+        <h3 class="text-color-primary mt-5">@ViewData["Title"]</h3>
+
+        <div class="col-md-4 p-0">
+            <div class="mb-2">
+                <a class="btn btn-primary" asp-action="Create"><i class="fas fa-hand-holding-medical"></i> Novo Serviço</a>
             </div>
         </div>
         @if (TempData["createSuccess"] != null)

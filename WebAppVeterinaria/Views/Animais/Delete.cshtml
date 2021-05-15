@@ -4,10 +4,10 @@
     ViewData["Title"] = "Excluir";
 }
 
-<section class="top-padding background-content vh-100">
+<section class="">
     <div class="container">
 
-        <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
+        <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm mt-5">
             <h1>Excluir</h1>
 
             <div class="col-md-12">
@@ -18,19 +18,13 @@
                 <hr />
                 <dl class="row">
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Id)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Id)
-                    </dd>
-                    <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Nome)
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.Nome)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Raca)
+                        @Html.DisplayName("Raça")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.Raca)
@@ -48,25 +42,25 @@
                         @Html.DisplayFor(model => model.Peso)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Observacao)
+                        @Html.DisplayName("Observação")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.Observacao)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.TipoSexo)
+                        @Html.DisplayName("Sexo")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.TipoSexo)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.TipoEspecie)
+                        @Html.DisplayName("Espécie")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.TipoEspecie)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.TipoPelo)
+                        @Html.DisplayName("Pelagem")
                     </dt>
                     <dd class="col-sm-10">
                         @Html.DisplayFor(model => model.TipoPelo)

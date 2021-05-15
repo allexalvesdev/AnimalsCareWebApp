@@ -4,10 +4,8 @@
     ViewData["Title"] = "Editar";
 }
 
-<section class="top-padding background-content">
+<section class="">
     <div class="container">
-        <h1>Editar Cliente</h1>
-        <hr />
         <div class="row">
             <div class="col-md-12">
                 <form asp-action="Edit">
@@ -17,7 +15,7 @@
                     <input type="hidden" asp-for="Id" />
 
                     <div class="row">
-                        <div>
+                        <div class="mt-5">
                             <h5>Dados do cliente</h5>
                         </div>
                         <div style="background-color:white; width:100%; display:flex; padding:40px; flex-wrap:wrap;" class="shadow-sm">
@@ -117,7 +115,7 @@
 
                     <div class="col-md-6 p-0 m-0">
                         <div class="form-group mt-2">
-                            <input type="submit" value="Atualizar" class="btn btn-success"/>
+                            <input type="submit" value="Atualizar" class="btn btn-success" />
                             <a class="btn btn-light" asp-action="Index">Voltar</a>
                         </div>
                     </div>

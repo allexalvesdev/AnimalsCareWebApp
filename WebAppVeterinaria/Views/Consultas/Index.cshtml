@@ -2,30 +2,32 @@
 @model X.PagedList.PagedList<WebAppVeterinaria.Entity.Consulta>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Consultas";
 }
-
-<section class="top-padding background-content vh-100">
+<section class="">
     <div class="container">
-        <h3 class="text-color-primary mt-1">Lista de Consultas</h3>
+        <h3 class="text-color-primary mt-5">@ViewData["Title"]</h3>
 
         <form class="mt-1" asp-action="index" asp-controller="consultas" method="get">
-            <div class="row">
-                <div class="col-md-8">
-                    <p class="form-inline">
-                        <input type="search" name="search" value="@ViewBag.Search" placeholder="Pesquise por Cliente..." style="width:80%" class="form-control" />
-                        <button type="submit" name="name" value="" class="btn btn-success"><i class="fas fa-search"></i></button>
-                        <a class="align-self-center mt-1" asp-action="Index">Limpar pesquisa</a>
-                    </p>
+            <div class="col-md-12">
+                <div class="row">
 
-                </div>
-                <div class="col-md-4">
-                    <div class="text-right">
-                        <a class="btn btn-primary text-right" asp-action="Create"><i class="fas fa-notes-medical"></i> Nova Consulta</a>
+                    <div class="input-group">
+                        <input type="search" name="search" value="@ViewBag.Search" placeholder="Pesquise por Cliente..." class="form-control" />
+                        <button type="submit" name="name" value="" class="btn btn-success"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="mb-3 mt-1">
+                        <a class="align-self-center mt-1" asp-action="Index">Limpar pesquisa</a>
                     </div>
                 </div>
             </div>
         </form>
+
+        <div class="col-md-4 p-0">
+            <div class="mb-2">
+                <a class="btn btn-primary" asp-action="Create"><i class="fas fa-notes-medical"></i> Nova Consulta</a>
+            </div>
+        </div>
 
         @if (TempData["createSuccess"] != null)
         {
@@ -38,11 +40,11 @@
         }
         @if (TempData["updateSuccess"] != null)
         {
-    <div id="msg_box" class="alert alert-success">@TempData["updateSuccess"]</div>
+            <div id="msg_box" class="alert alert-success">@TempData["updateSuccess"]</div>
         }
         @if (TempData["deleteSuccess"] != null)
         {
-    <div id="msg_box" class="alert alert-success">@TempData["deleteSuccess"]</div>
+            <div id="msg_box" class="alert alert-success">@TempData["deleteSuccess"]</div>
         }
 
         <table class="table shadow p-3 rounded">
@@ -83,13 +85,13 @@
                             @Html.DisplayFor(modelItem => item.DataConsulta)
                         </td>
                         <td>
-                            @if (item.DataRetorno.ToString() != null )
+                            @if (item.DataRetorno.ToString() != null)
                             {
                                 @Html.DisplayFor(modelItem => item.DataRetorno)
                             }
                             else
                             {
-                            <span>-</span>
+                                <span>-</span>
                             }
                         </td>
                         <td>

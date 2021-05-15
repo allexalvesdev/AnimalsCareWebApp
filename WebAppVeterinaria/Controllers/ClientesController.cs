@@ -106,6 +106,7 @@ namespace WebAppVeterinaria.Controllers
             clienteViewModel.Complemento = cliente.Complemento;
             clienteViewModel.Cidade = cliente.Cidade;
             clienteViewModel.Estado = cliente.Estado;
+            clienteViewModel.Ativo = cliente.Ativo;
 
 
             return View(clienteViewModel);
