@@ -49,7 +49,7 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
 
             [Required(ErrorMessage = "O Campo {0} é obrigatório")]
             [DataType(DataType.Text)]
-            [Display(Name = "Senha")]
+            [Display(Name = "Nome")]
             public string Nome { get; set; }
 
             [Required(ErrorMessage = "O Campo {0} é obrigatório")]
