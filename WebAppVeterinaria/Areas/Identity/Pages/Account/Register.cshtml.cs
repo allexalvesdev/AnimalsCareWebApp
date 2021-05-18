@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -52,9 +51,10 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
             [Display(Name = "Nome")]
             public string Nome { get; set; }
 
-            [Required(ErrorMessage = "O Campo {0} é obrigatório")]
-            [EmailAddress]
+
+
             [Display(Name = "E-mail")]
+            [Required(ErrorMessage = "O Campo {0} é obrigatório."), EmailAddress(ErrorMessage = "O campo E-mail não é um endereço de e-mail válido.")]
             public string Email { get; set; }
 
             [Required(ErrorMessage = "O Campo {0} é obrigatório")]
