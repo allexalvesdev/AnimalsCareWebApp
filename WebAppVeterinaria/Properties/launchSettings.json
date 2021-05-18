@@ -15,13 +15,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS - Prod": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
-      }
-    },
     "WebAppVeterinaria": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
