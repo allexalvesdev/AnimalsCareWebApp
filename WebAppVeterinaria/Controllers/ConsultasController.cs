@@ -39,7 +39,7 @@ namespace WebAppVeterinaria.Controllers
                 .Include(c => c.Veterinario)
                 .Where(u => u.UsuarioId == userId)
                 .OrderBy(c => c.DataConsulta)
-                .Where(c => c.Cliente.NomeCompleto.Contains(search));
+                .Where(c => c.Cliente.NomeCompleto.Contains(search) || c.NomeAnimal.Contains(search));
 
 
 
