@@ -69,7 +69,7 @@
                         @Html.DisplayNameFor(model => model.Nascimento)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Nascimento)
+                        @Model.Nascimento.ToString("dd/MM/yyyy")
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayName("Cliente")

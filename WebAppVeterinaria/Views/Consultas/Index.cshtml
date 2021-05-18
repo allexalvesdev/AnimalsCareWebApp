@@ -82,17 +82,10 @@
                             @Html.DisplayFor(modelItem => item.NomeAnimal)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DataConsulta)
+                            @item.DataConsulta.ToString("dd/MM/yyyy HH:mm:ss")
                         </td>
                         <td>
-                            @if (item.DataRetorno.ToString() != null)
-                            {
-                                @Html.DisplayFor(modelItem => item.DataRetorno)
-                            }
-                            else
-                            {
-                                <span>-</span>
-                            }
+                            @item.DataRetorno?.ToString("dd/MM/yyyy HH:mm:ss")
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Retorno)

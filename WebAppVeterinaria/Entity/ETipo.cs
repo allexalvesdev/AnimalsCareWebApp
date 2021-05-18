@@ -8,7 +8,7 @@
 
     public enum ETipoSexo
     {
-        Maxo = 1,
+        Macho = 1,
         Femea = 2
     }
 
