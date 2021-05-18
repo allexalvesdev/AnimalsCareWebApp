@@ -47,17 +47,17 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
         public class InputModel
         {
 
-            [Required]
+            [Required(ErrorMessage = "O Campo {0} é obrigatório")]
             [DataType(DataType.Text)]
             [Display(Name = "Senha")]
             public string Nome { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "O Campo {0} é obrigatório")]
             [EmailAddress]
             [Display(Name = "E-mail")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "O Campo {0} é obrigatório")]
             [StringLength(6, ErrorMessage = "O {0} deve ter pelo menos {2} e no máximo {1} caracteres.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]

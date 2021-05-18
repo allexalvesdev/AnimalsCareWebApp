@@ -42,12 +42,14 @@ namespace WebAppVeterinaria.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "O Campo {0} é obrigatório")]
             [EmailAddress]
+            [Display(Name = "E-mail")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "O Campo {0} é obrigatório")]
             [DataType(DataType.Password)]
+            [Display(Name = "Senha")]
             public string Password { get; set; }
 
             [Display(Name = "Lembrar Senha?")]
