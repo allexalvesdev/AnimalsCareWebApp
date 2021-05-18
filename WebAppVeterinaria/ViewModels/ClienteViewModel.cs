@@ -28,10 +28,11 @@ namespace WebAppVeterinaria.ViewModels
         [DisplayName("CPF")]
         public string Cpf { get; set; }
 
+        [StringLength(11, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "O Campo {0} é obrigatório")]
-        [StringLength(41, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
+        [StringLength(11, ErrorMessage = "O Campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 2)]
         public string Celular { get; set; }
 
         public bool Ativo { get; set; }
