@@ -63,7 +63,7 @@
                         @Html.DisplayName("Sexo")
                     </dt>
                     <dd class="col-sm-10">
-                        @if (Model.TipoSexo.ToString() == "1")
+                        @if ((int)Model.TipoSexo == 1)
                         {
                             <div>
                                 <h6>Macho</h6>
@@ -80,7 +80,7 @@
                         @Html.DisplayName("Espécie")
                     </dt>
                     <dd class="col-sm-10">
-                        @if (Model.TipoEspecie.ToString() == "1")
+                        @if ((int)Model.TipoEspecie == 1)
                         {
                             <div>
                                 <h6>Canina</h6>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aalve\\source\\repos\\WebAppVeterinaria\\WebAppVeterinaria\\WebAppVeterinaria.csproj": {}
+    "C:\\Dev\\github\\WebAppVetAnimalsCare\\WebAppVeterinaria\\WebAppVeterinaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aalve\\source\\repos\\WebAppVeterinaria\\WebAppVeterinaria\\WebAppVeterinaria.csproj": {
+    "C:\\Dev\\github\\WebAppVetAnimalsCare\\WebAppVeterinaria\\WebAppVeterinaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aalve\\source\\repos\\WebAppVeterinaria\\WebAppVeterinaria\\WebAppVeterinaria.csproj",
+        "projectUniqueName": "C:\\Dev\\github\\WebAppVetAnimalsCare\\WebAppVeterinaria\\WebAppVeterinaria.csproj",
         "projectName": "WebAppVeterinaria",
-        "projectPath": "C:\\Users\\aalve\\source\\repos\\WebAppVeterinaria\\WebAppVeterinaria\\WebAppVeterinaria.csproj",
+        "projectPath": "C:\\Dev\\github\\WebAppVetAnimalsCare\\WebAppVeterinaria\\WebAppVeterinaria.csproj",
         "packagesPath": "C:\\Users\\aalve\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aalve\\source\\repos\\WebAppVeterinaria\\WebAppVeterinaria\\obj\\",
+        "outputPath": "C:\\Dev\\github\\WebAppVetAnimalsCare\\WebAppVeterinaria\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

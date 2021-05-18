@@ -235,6 +235,12 @@ namespace WebAppVeterinaria.Migrations
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DataExclusao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Excluido")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Idade")
                         .HasColumnType("varchar(50)");
 

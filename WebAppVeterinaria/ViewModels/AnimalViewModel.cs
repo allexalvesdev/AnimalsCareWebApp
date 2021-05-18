@@ -43,6 +43,7 @@ namespace WebAppVeterinaria.ViewModels
         [Required(ErrorMessage = "Escolha a data de Nascimento")]
         public DateTime Nascimento { get; set; }
 
+
         [DisplayName("Cliente")]
         public int ClienteId { get; set; }
         public virtual Cliente Cliente { get; set; }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GF5Q/AvNFK5EvFhlKiW3z7JeQO4JtFS+3rlphmdOhoZb8WXgxF4IzfM19Ysj7cBLqQ9oKu/9DY6qG1IKs7qD3Q==",
+  "dgSpecHash": "0YBOmhEpPsx/MtvcE8lfaOGgNq1pGsfV+Dr0o7oJ9vF18itd+VuPMh8W9TsNB4hADdlW6gLvWabAzJeZ3M2tBg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aalve\\source\\repos\\WebAppVeterinaria\\WebAppVeterinaria\\WebAppVeterinaria.csproj",
+  "projectFilePath": "C:\\Dev\\github\\WebAppVetAnimalsCare\\WebAppVeterinaria\\WebAppVeterinaria.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aalve\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\aalve\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",

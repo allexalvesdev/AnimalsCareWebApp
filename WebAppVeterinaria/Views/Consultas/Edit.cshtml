@@ -9,7 +9,6 @@
             <div class="col-md-12">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                     <div class="row">
                         <div>
                             <h5>Dados do cliente</h5>
@@ -101,13 +100,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="TipoEspecie" class="control-label">Espécie</label><br />
-                                    <input type="radio" value="1" asp-for="TipoEspecie" checked="@Model.TipoEspecie == 1" /> Canina
-                                    <input type="radio" value="2" asp-for="TipoEspecie" checked="@Model.TipoEspecie == 2" /> Felina
+                                    <input type="radio" value="1" asp-for="TipoEspecie" checked="@((int)Model.TipoEspecie == 1)" /> Canina
+                                    <input type="radio" value="2" asp-for="TipoEspecie" checked="@((int)Model.TipoEspecie == 2)" /> Felina
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="TipoSexo" class="control-label">Sexo</label><br />
-                                    <input type="radio" value="1" asp-for="TipoSexo" checked="@Model.TipoSexo == 1" /> Macho
-                                    <input type="radio" value="2" asp-for="TipoSexo" checked="@Model.TipoSexo == 2" /> Fêmea
+                                    <input type="radio" value="1" asp-for="TipoSexo" checked="@((int)Model.TipoSexo == 1)" /> Macho
+                                    <input type="radio" value="2" asp-for="TipoSexo" checked="@((int)Model.TipoSexo == 2)" /> Fêmea
                                 </div>
                             </div>
 
