@@ -33,11 +33,8 @@ namespace WebAppVeterinaria.ViewModels
 
         //Dados Pet
 
-        [DisplayName("Nome do pet")]
-        public string NomeAnimal { get; set; }
-
         [DisplayName("Raça")]
-        public string RacaAnimal { get; set; }
+        public string Raca { get; set; }
 
         [DisplayName("Sexo")]
         public ETipoSexo TipoSexo { get; set; }
@@ -58,6 +55,7 @@ namespace WebAppVeterinaria.ViewModels
 
         [DisplayName("Pet")]
         public int AnimalId { get; set; }
+
         public string UsuarioId { get; set; }
 
         /*Relacao EF*/

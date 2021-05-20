@@ -18,8 +18,7 @@ namespace WebAppVeterinaria.Entity
 
         //Dados Pet
 
-        public string NomeAnimal { get; set; }
-        public string RacaAnimal { get; set; }
+        public string Raca { get; set; }
         public ETipoSexo TipoSexo { get; set; }
         public ETipoEspecie TipoEspecie { get; set; }
         public string Idade { get; set; }

@@ -365,16 +365,13 @@ namespace WebAppVeterinaria.Migrations
                     b.Property<string>("Idade")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NomeAnimal")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Observacao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Peso")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RacaAnimal")
+                    b.Property<string>("Raca")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Retorno")

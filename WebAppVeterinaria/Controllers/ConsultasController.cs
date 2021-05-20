@@ -40,7 +40,7 @@ namespace WebAppVeterinaria.Controllers
                 .Include(c => c.Animal)
                 .Where(u => u.UsuarioId == userId)
                 .OrderBy(c => c.DataConsulta)
-                .Where(c => c.Cliente.NomeCompleto.Contains(search) || c.NomeAnimal.Contains(search));
+                .Where(c => c.Cliente.NomeCompleto.Contains(search) || c.Animal.Nome.Contains(search));
 
 
 
@@ -70,6 +70,7 @@ namespace WebAppVeterinaria.Controllers
             ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto");
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto");
             ViewData["AnimalId"] = new SelectList(_context.Animais.Where(u => u.UsuarioId == userId), "Id", "Nome");
+
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
@@ -81,11 +82,16 @@ namespace WebAppVeterinaria.Controllers
             if (ModelState.IsValid)
             {
                 TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
                 _context.Consultas.Add(consulta);
+
                 await _context.SaveChangesAsync();
+
                 TempData["CreateSuccess"] = "Consulta cadastrado com Sucesso";
+
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
             ViewData["AnimalId"] = new SelectList(_context.Animais, "Id", "Nome", consulta.AnimalId);
@@ -97,34 +103,37 @@ namespace WebAppVeterinaria.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
+            var consulta = await _context.Consultas.FindAsync(id);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var consulta = await _context.Consultas.FindAsync(id);
-            TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (consulta == null)
+            {
+                return NotFound();
+            }
+
             var consultaViewModel = new ConsultaViewModel();
 
+            consultaViewModel.AnimalId = consulta.AnimalId;
             consultaViewModel.DataCadastro = consulta.DataCadastro;
             consultaViewModel.DataConsulta = consulta.DataConsulta;
             consultaViewModel.DataRetorno = consulta.DataRetorno;
             consultaViewModel.Descricao = consulta.Descricao;
             consultaViewModel.Retorno = consulta.Retorno;
             consultaViewModel.Observacao = consulta.Observacao;
-            consultaViewModel.NomeAnimal = consulta.NomeAnimal;
-            consultaViewModel.RacaAnimal = consulta.RacaAnimal;
+            consultaViewModel.Raca = consulta.Raca;
             consultaViewModel.TipoSexo = consulta.TipoSexo;
             consultaViewModel.TipoEspecie = consulta.TipoEspecie;
             consultaViewModel.Idade = consulta.Idade;
             consultaViewModel.Peso = consulta.Peso;
             consultaViewModel.HistoricoClinicoAnimal = consulta.HistoricoClinicoAnimal;
+           
 
-            if (consulta == null)
-            {
-                return NotFound();
-            }
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", consulta.VeterinarioId);
             ViewData["AnimalId"] = new SelectList(_context.Animais.Where(u => u.UsuarioId == userId), "Id", "Nome", consulta.AnimalId);
@@ -182,6 +191,13 @@ namespace WebAppVeterinaria.Controllers
             await _context.SaveChangesAsync();
             TempData["deleteSuccess"] = "Consulta excluída com Sucesso";
             return RedirectToAction("Index");
+        }
+
+        public JsonResult LoadPet(int id)
+        {
+            var pet = _context.Animais.Where(x => x.ClienteId == id).ToList();
+
+            return Json(new SelectList(pet, "Id", "Nome"));
         }
     }
 }
