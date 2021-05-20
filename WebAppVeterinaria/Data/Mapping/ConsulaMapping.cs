@@ -26,11 +26,11 @@ namespace WebAppVeterinaria.Data.Mapping
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.HasOne(a => a.Animal)
-            //    .WithMany()
-            //    .HasForeignKey(a => a.AnimalId)
-            //    .IsRequired()
-            //    .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(a => a.Animal)
+                .WithMany()
+                .HasForeignKey(a => a.AnimalId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

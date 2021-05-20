@@ -37,6 +37,7 @@ namespace WebAppVeterinaria.Controllers
             var consultas = _context.Consultas
                 .Include(c => c.Cliente)
                 .Include(c => c.Veterinario)
+                .Include(c => c.Animal)
                 .Where(u => u.UsuarioId == userId)
                 .OrderBy(c => c.DataConsulta)
                 .Where(c => c.Cliente.NomeCompleto.Contains(search) || c.NomeAnimal.Contains(search));
@@ -56,6 +57,7 @@ namespace WebAppVeterinaria.Controllers
             var detalhes = await _context.Consultas
                 .Include(c => c.Cliente)
                 .Include(c => c.Veterinario)
+                .Include(c => c.Animal)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             return View(detalhes);
@@ -67,6 +69,7 @@ namespace WebAppVeterinaria.Controllers
 
             ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto");
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto");
+            ViewData["AnimalId"] = new SelectList(_context.Animais.Where(u => u.UsuarioId == userId), "Id", "Nome");
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             return View();
         }
@@ -85,6 +88,7 @@ namespace WebAppVeterinaria.Controllers
             }
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios, "Id", "NomeCompleto", consulta.VeterinarioId);
+            ViewData["AnimalId"] = new SelectList(_context.Animais, "Id", "Nome", consulta.AnimalId);
 
             TempData["error"] = "Houve um erro ao cadastraro a consulta";
             return View(consulta);
@@ -102,7 +106,7 @@ namespace WebAppVeterinaria.Controllers
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var consultaViewModel = new ConsultaViewModel();
 
-            consultaViewModel.DataCadastro = consulta.DataCadastro; 
+            consultaViewModel.DataCadastro = consulta.DataCadastro;
             consultaViewModel.DataConsulta = consulta.DataConsulta;
             consultaViewModel.DataRetorno = consulta.DataRetorno;
             consultaViewModel.Descricao = consulta.Descricao;
@@ -123,6 +127,7 @@ namespace WebAppVeterinaria.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", consulta.ClienteId);
             ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", consulta.VeterinarioId);
+            ViewData["AnimalId"] = new SelectList(_context.Animais.Where(u => u.UsuarioId == userId), "Id", "Nome", consulta.AnimalId);
 
             return View(consultaViewModel);
         }
@@ -137,6 +142,8 @@ namespace WebAppVeterinaria.Controllers
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", consulta.ClienteId);
                 ViewData["VeterinarioId"] = new SelectList(_context.Veterinarios.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto", consulta.VeterinarioId);
+                ViewData["AnimalId"] = new SelectList(_context.Animais.Where(u => u.UsuarioId == userId), "Id", "Nome", consulta.AnimalId);
+
                 return View(consulta);
             }
 
@@ -158,6 +165,7 @@ namespace WebAppVeterinaria.Controllers
             var consulta = await _context.Consultas
                 .Include(c => c.Cliente)
                 .Include(c => c.Veterinario)
+                .Include(c => c.Animal)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
 

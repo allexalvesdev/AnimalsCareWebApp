@@ -29,8 +29,8 @@ namespace WebAppVeterinaria.Entity
 
         public int ClienteId { get; set; }
         public int VeterinarioId { get; set; }
-        //public int AnimalId { get; set; }
-        //public virtual Animal Animal { get; set; }
+        public int AnimalId { get; set; }
+        public virtual Animal Animal { get; set; }
 
         /*Relacao EF*/
         public virtual Cliente Cliente { get; set; }

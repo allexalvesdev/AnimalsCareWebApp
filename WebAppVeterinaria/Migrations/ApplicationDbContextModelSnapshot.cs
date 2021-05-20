@@ -339,6 +339,9 @@ namespace WebAppVeterinaria.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AnimalId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
@@ -391,6 +394,8 @@ namespace WebAppVeterinaria.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AnimalId");
 
                     b.HasIndex("ClienteId");
 
@@ -572,6 +577,12 @@ namespace WebAppVeterinaria.Migrations
 
             modelBuilder.Entity("WebAppVeterinaria.Entity.Consulta", b =>
                 {
+                    b.HasOne("WebAppVeterinaria.Entity.Animal", "Animal")
+                        .WithMany()
+                        .HasForeignKey("AnimalId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("WebAppVeterinaria.Entity.Cliente", "Cliente")
                         .WithMany("Consultas")
                         .HasForeignKey("ClienteId")
@@ -589,6 +600,8 @@ namespace WebAppVeterinaria.Migrations
                         .HasForeignKey("VeterinarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Animal");
 
                     b.Navigation("Cliente");
 
