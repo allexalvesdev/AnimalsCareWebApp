@@ -5,7 +5,7 @@ namespace WebAppVeterinaria.Entity
 {
     public class Animal
     {
-        [Key]
+
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Raca { get; set; }

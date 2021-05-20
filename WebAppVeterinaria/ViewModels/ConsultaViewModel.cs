@@ -55,9 +55,13 @@ namespace WebAppVeterinaria.ViewModels
 
         [DisplayName("Veterinário")]
         public int VeterinarioId { get; set; }
+        //[DisplayName("Pet")]
+        //public int AnimalId { get; set; }
+        //public virtual Animal Animal { get; set; }
 
         /*Relacao EF*/
         public virtual Cliente Cliente { get; set; }
+        
         public virtual Veterinario Veterinario { get; set; }
         public virtual ApplicationUser Usuario { get; set; }
         public string UsuarioId { get; set; }
