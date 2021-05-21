@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -72,7 +73,12 @@ namespace WebAppVeterinaria.Controllers
             ViewData["AnimalId"] = new SelectList(_context.Animais.Where(u => u.UsuarioId == userId), "Id", "Nome");
 
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return View();
+
+            var consultaViewModel = new ConsultaViewModel();
+
+            consultaViewModel.DataConsulta = DateTime.Now;
+
+            return View(consultaViewModel);
         }
 
         [HttpPost]

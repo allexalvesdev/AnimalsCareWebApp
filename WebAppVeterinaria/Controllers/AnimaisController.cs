@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -53,11 +55,13 @@ namespace WebAppVeterinaria.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             ViewData["ClienteId"] = new SelectList(_context.Clientes.Where(u => u.UsuarioId == userId), "Id", "NomeCompleto");
-
-
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            return View();
+            var animalViewModel = new AnimalViewModel();
+
+            animalViewModel.Nascimento = DateTime.Now;
+
+            return View(animalViewModel);
         }
 
 
