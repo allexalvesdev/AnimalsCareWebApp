@@ -74,11 +74,7 @@ namespace WebAppVeterinaria.Controllers
 
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var consultaViewModel = new ConsultaViewModel();
-
-            consultaViewModel.DataConsulta = DateTime.Now;
-
-            return View(consultaViewModel);
+            return View();
         }
 
         [HttpPost]
@@ -126,6 +122,8 @@ namespace WebAppVeterinaria.Controllers
             var consultaViewModel = new ConsultaViewModel();
 
             consultaViewModel.AnimalId = consulta.AnimalId;
+            consultaViewModel.ClienteId = consulta.ClienteId;
+            consultaViewModel.VeterinarioId = consulta.VeterinarioId;
             consultaViewModel.DataCadastro = consulta.DataCadastro;
             consultaViewModel.DataConsulta = consulta.DataConsulta;
             consultaViewModel.DataRetorno = consulta.DataRetorno;
@@ -163,6 +161,25 @@ namespace WebAppVeterinaria.Controllers
             }
 
             TempData["UsuarioId"] = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            #region
+            //consulta.AnimalId = consultaViewModel.AnimalId;
+            //consulta.ClienteId = consultaViewModel.ClienteId;
+            //consulta.VeterinarioId = consultaViewModel.VeterinarioId;
+            //consulta.DataCadastro = consultaViewModel.DataCadastro;
+            //consulta.DataConsulta = consultaViewModel.DataConsulta;
+            //consulta.DataRetorno = consultaViewModel.DataRetorno;
+            //consulta.Descricao = consultaViewModel.Descricao;
+            //consulta.Retorno = consultaViewModel.Retorno;
+            //consulta.Observacao = consultaViewModel.Observacao;
+            //consulta.Raca = consultaViewModel.Raca;
+            //consulta.TipoSexo = consultaViewModel.TipoSexo;
+            //consulta.TipoEspecie = consultaViewModel.TipoEspecie;
+            //consulta.Idade = consultaViewModel.Idade;
+            //consulta.Peso = consultaViewModel.Peso;
+            //consulta.HistoricoClinicoAnimal = consultaViewModel.HistoricoClinicoAnimal;
+            #endregion
+
             _context.Consultas.Update(consulta);
 
             await _context.SaveChangesAsync();
@@ -204,6 +221,23 @@ namespace WebAppVeterinaria.Controllers
             var pet = _context.Animais.Where(x => x.ClienteId == id).ToList();
 
             return Json(new SelectList(pet, "Id", "Nome"));
+        }
+
+        public JsonResult BuscarPet(int id)
+        {
+            var pet = _context.Animais.Where(p => p.Id == id).FirstOrDefault();
+
+            string[] result = new string[6];
+
+            result[0] = pet.Raca;
+            result[1] = pet.Idade;
+            result[2] = pet.TipoEspecie.ToString();
+            result[3] = pet.TipoSexo.ToString();
+            result[4] = pet.Peso;
+            result[5] = pet.Observacao;
+
+            return Json(result);
+
         }
     }
 }

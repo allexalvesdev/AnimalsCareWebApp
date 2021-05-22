@@ -348,10 +348,12 @@ namespace WebAppVeterinaria.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<DateTime>("DataConsulta")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GetDate()");
 
                     b.Property<DateTime?>("DataRetorno")
                         .HasColumnType("datetime2");

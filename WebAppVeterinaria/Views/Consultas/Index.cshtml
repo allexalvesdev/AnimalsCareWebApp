@@ -13,7 +13,7 @@
                 <div class="row">
 
                     <div class="input-group">
-                        <input type="search" name="search" value="@ViewBag.Search" placeholder="Pesquise por Cliente..." class="form-control" />
+                        <input type="search" name="search" value="@ViewBag.Search" placeholder="Pesquise por Cliente ou nome do Pet..." class="form-control" />
                         <button type="submit" name="name" value="" class="btn btn-success"><i class="fas fa-search"></i></button>
                     </div>
                     <div class="mb-3 mt-1">
@@ -57,13 +57,13 @@
                         @Html.DisplayName("Paciente")
                     </th>
                     <th>
-                        @Html.DisplayName("Data da Consulta")
+                        @Html.DisplayName("Descrição")
                     </th>
                     <th>
-                        @Html.DisplayName("Data de Retorno")
+                        @Html.DisplayName("Data Consulta")
                     </th>
                     <th>
-                        @Html.DisplayName("Retorno?")
+                        @Html.DisplayName("Data Retorno")
                     </th>
                     <th>
                         @Html.DisplayName("Veterinário")
@@ -74,31 +74,31 @@
             <tbody class="bg-light text-color-primary">
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cliente.NomeCompleto)
-                        </td>
-                        <td>
-                            @item.Animal.Nome
-                        </td>
-                        <td>
-                            @item.DataConsulta.ToString("dd/MM/yyyy HH:mm:ss")
-                        </td>
-                        <td>
-                            @item.DataRetorno?.ToString("dd/MM/yyyy HH:mm:ss")
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Retorno)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Veterinario.NomeCompleto)
-                        </td>
-                        <td>
-                            @Html.ActionLink("", "Edit", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
-                            @Html.ActionLink("", "Details", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-search p-2 shadow-sm text-info" })
-                            @Html.ActionLink("", "Delete", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-trash-alt p-2 shadow-sm text-danger" })
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.NomeCompleto)
+                    </td>
+                    <td>
+                        @item.Animal.Nome
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @item.DataConsulta.ToString("dd/MM/yyyy HH:mm:ss")
+                    </td>
+                    <td>
+                        @item.DataRetorno?.ToString("dd/MM/yyyy HH:mm:ss")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veterinario.NomeCompleto)
+                    </td>
+                    <td>
+                        @Html.ActionLink("", "Edit", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-pen p-2 shadow-sm text-warning" })
+                        @Html.ActionLink("", "Details", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-search p-2 shadow-sm text-info" })
+                        @Html.ActionLink("", "Delete", new { item.Id }, new { @class = "btn btn-light bg-white fas fa-trash-alt p-2 shadow-sm text-danger" })
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

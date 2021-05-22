@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WebAppVeterinaria.Entity;
 
 namespace WebAppVeterinaria.ViewModels
@@ -8,7 +9,6 @@ namespace WebAppVeterinaria.ViewModels
     public class ConsultaViewModel
     {
         //Dados Consulta
-        [Key]
         public int Id { get; set; }
 
         [DisplayName("Data do Cadastro")]
@@ -16,6 +16,8 @@ namespace WebAppVeterinaria.ViewModels
 
         [DisplayName("Data da Consuta")]
         [Required(ErrorMessage = "Escolha uma data para consulta")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}")]
         public DateTime DataConsulta { get; set; }
 
         [DisplayName("Data do Retorno")]

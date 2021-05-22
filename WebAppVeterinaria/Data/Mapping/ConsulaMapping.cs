@@ -15,7 +15,10 @@ namespace WebAppVeterinaria.Data.Mapping
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.DataCadastro)
-                .HasDefaultValueSql("getdate()");
+                .HasDefaultValueSql("GetDate()");
+
+            builder.Property(c => c.DataConsulta)
+                 .HasDefaultValueSql("GetDate()");
 
             builder.Property(c => c.Descricao).HasColumnType("varchar(1000)");
             builder.Property(c => c.HistoricoClinicoAnimal).HasColumnType("varchar(1000)");
