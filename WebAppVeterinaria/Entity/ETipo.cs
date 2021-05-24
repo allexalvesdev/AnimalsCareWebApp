@@ -11,9 +11,10 @@ namespace WebAppVeterinaria.Entity
 
     public enum ETipoSexo
     {
-        Macho = 0,
+        [Display(Name = "Macho")]
+        Macho = 1,
         [Display(Name = "Fêmea")]
-        Femea = 1
+        Femea = 2
     }
 
     public enum ETipoPelo
