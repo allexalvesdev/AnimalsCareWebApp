@@ -186,9 +186,12 @@ $(document).ready(function () {
             $(document).ready(function () {
                 $("#PetList").on("change", function () {
 
+                    
                     var val = $("#PetList");
 
-                var url = '@Url.Action("BuscarPet")';
+                    var url = '@Url.Action("BuscarPet")';
+
+                    
 
                 $.getJSON(url, { id: $(val).val() }, function (result) {
 
@@ -200,6 +203,8 @@ $(document).ready(function () {
                     $("#txtObs").val(result[5])
 
                 });
+
+                   
             });
         });
     </script>
